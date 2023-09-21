@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>control panel for woocommerce </title>
+    <link rel="stylesheet" href="order.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+
+<body>
+
+    <div class="wrapper">
+        <div id="sidebar">
+            <ul>
+                <li data-name="Dashboard">
+                    <i class="fa-solid fa-database"></i>
+                </li>
+                <li data-name="Cart">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                </li>
+                <li data-name="User">
+                    <i class="fa-solid fa-user"></i>
+                </li>
+                <li data-name="Chart">
+                    <i class="fa-solid fa-chart-pie"></i>
+
+                </li>
+                <li data-name="Link"><i class="fa-solid fa-ribbon"></i></li>
+                <li data-name="Website"><i class="fa-solid fa-up-right-from-square"></i></li>
+                <li data-name="Message"><i class="fa-solid fa-message"></i></i></li>
+                <li data-name="Pin"><i class="fa-solid fa-thumbtack"></i></i></li>
+                <li data-name="Settings"><i class="fa-solid fa-gear"></i></li>
+                <li data-name="Logout"><i class="fa-solid fa-power-off"></i></li>
+            </ul>
+        </div>
+
+        <div id="main-content">
+            <div class="search-bar">
+                <input type="text" placeholder="search product, order, customer..." id="search">
+                <div id="noti-icon">
+                    <i class="fa-solid fa-bell" id="show-noti"></i>
+                </div>
+            </div>
+            <div class="main-context">
+                <div class="tabs-item dashboard active">
+
+                    <h1>Dashboard</h1>
+                    <div class="context-card-container">
+                        <div>
+                            <h1>0</h1>
+                            <span>Today order</span>
+                        </div>
+                        <div>
+
+                            <h1>0</h1>
+                            <span>Today visitors</span>
+                        </div>
+                        <div>
+                            <h1>0</h1>
+                            <span>Order-in-progress</span>
+
+                        </div>
+                        <div>
+                            <h1>$&nbsp;0</h1>
+                            <span>Today-sales</span>
+
+                        </div>
+                        <div>
+                            <h1>$&nbsp;0</h1>
+                            <span>Week-sales</span>
+
+                        </div>
+                        <div>
+                            <h1>$&nbsp;0</h1>
+                            <span>Monthly-sales</span>
+
+                        </div>
+                    </div>
+
+                    <div class="visitor-chart">
+                        <div class="online-visitor">
+                            <p>Online visitors</p>
+                            <h3>0</h3>
+                        </div>
+                        <div class="monthly-visitor">
+                            <div class="date-serial-count">
+                                <p></p>
+                                <p></p>
+                                <p></p>
+                                <p></p>
+                                <p></p>
+                                <p></p>
+                                <p></p>
+                                <p></p>
+                                <p></p>
+                                <p></p>
+                                <p></p>
+                                <p></p>
+                                <p></p>
+                                <p></p>
+                                <p></p>
+                                <p></p>
+                                <p></p>
+                                <p></p>
+                                <p></p>
+                                <p></p>
+                                <p></p>
+                                <p></p>
+                                <p></p>
+                                <p></p>
+                                <p></p>
+                                <p></p>
+                                <p></p>
+                                <p></p>
+                                <p></p>
+                                <p></p>
+                                <p></p>
+                                <p></p>
+                            </div>
+                            <div class="date-serial">
+                                <p>1</p>
+                                <p>2</p>
+                                <p>3</p>
+                                <p>4</p>
+                                <p>5</p>
+                                <p>6</p>
+                                <p>7</p>
+                                <p>8</p>
+                                <p>9</p>
+                                <p>10</p>
+                                <p>11</p>
+                                <p>12</p>
+                                <p>13</p>
+                                <p>14</p>
+                                <p>15</p>
+                                <p>16</p>
+                                <p>17</p>
+                                <p>18</p>
+                                <p>19</p>
+                                <p>20</p>
+                                <p>21</p>
+                                <p>22</p>
+                                <p>22</p>
+                                <p>24</p>
+                                <p>25</p>
+                                <p>26</p>
+                                <p>27</p>
+                                <p>28</p>
+                                <p>29</p>
+                                <p>30</p>
+                                <p>31</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="order tabs-item hidden">
+                    <div class="order-topbar">
+                        <h1>Order</h1>
+                        <button>+ &nbsp;Add order</button>
+                    </div>
+                    <div class="order-tabs">
+                        <div class="order-tabs-desc">
+                            <p>All order <span>78</span></p>
+                            <p>Processing <span>21</span></p>
+                            <p>Confirm <span>2</span></p>
+                            <p>Processing <span>21</span></p>
+                            <p>In transit <span>21</span></p>
+                            <p>Deliverd <span>21</span></p>
+                            <p>Return <span>21</span></p>
+                            <p>Cancel <span>21</span></p>
+                            <p>Trash <span>21</span></p>
+
+                        </div>
+                        <input type="text" placeholder="search order..." class="search-order">
+                    </div>
+
+
+                    <div class="order-time">
+                        <span>last week</span>
+                    </div>
+
+                    <div class="order-container">
+                        <div class="order-card">
+                            <div class="order-visible">
+                                <div class="order-card-left">
+                                    <p class="order-serial">20230</p>
+                                    <div class="order-status">
+                                        <div class="status-circle"></div>
+                                        <p>Processing</p>
+                                    </div>
+                                    <div class="customer-name">
+                                        <p>Md Rahed Mia</p>
+                                    </div>
+                                    <div class="order-date">
+                                        <div>
+                                            20/05/2023 Tue 08:12 AM</div>
+                                        <div class="delivery-type">
+                                            Cash on delivery
+                                        </div>
+                                    </div>
+                                    <div class="product-img">
+                                        <img src="https://images.pexels.com/photos/6621857/pexels-photo-6621857.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                                            alt="img">
+                                    </div>
+                                </div>
+                                <div class="order-card-right">
+                                    <p class="order-price">$1250.00</p>
+                                </div>
+                            </div>
+
+                            <div class="order-hidden">
+                                <div class="product-desc">
+                                    <div class="product-img">
+                                        <img src="https://images.pexels.com/photos/6621857/pexels-photo-6621857.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                                            alt="img">
+                                    </div>
+                                    <div class="product-price-desc">
+                                        <p>Skime rose gold white 2023</p>
+                                        <p>$ 1250 * <span>2</span> = <span>$ 2500</span></p>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="billing-address">
+                                        <h4>Billing Address</h4>
+                                        <p>Ruhul Amin Sobuj</p>
+                                        <p>Shitol Jorna R/A, Kulgaon, Jalalabad 3904,<br>Bostami Bostami, Chattogram.
+                                        </p>
+                                        <div class="bill-email">Email Address
+
+
+                                            <a href="#">mdrahed321@gmail.com</a>
+                                        </div>
+                                        <p class="phone-number">Phone number <span>+88 01542-250122</span></p>
+                                    </div>
+                                </div>
+                                <div>
+                                    o3
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="notification">
+            <h1>Notification</h1>
+            <i class="fa-solid noti-cancel fa-xmark"></i>
+            <div class="noti-card">
+                <span>2days ago</span>
+                <div>
+                    <h3>Congratulations! A new record</h3>
+                    <div>
+                        <span>Todays Sales Summary</span>
+                        <p>here are 1 people on your site right now and this is a new record. Your last record was
+                            0</span>
+                    </div>
+
+                    <div class="noti-delete">
+                        <span>delete</span>
+                        <span>mark as read</span>
+                    </div>
+                </div>
+
+            </div>
+            <div class="noti-card">
+                <span>2days ago</span>
+                <div>
+                    <h3>Congratulations! A new record</h3>
+                    <div>
+                        <span>Todays Sales Summary</span>
+                        <p>here are 1 people on your site right now and this is a new record. Your last record was
+                            0</span>
+                    </div>
+
+                    <div class="noti-delete">
+                        <span>delete</span>
+                        <span>mark as read</span>
+                    </div>
+                </div>
+
+            </div>
+            <div class="noti-card">
+                <span>2days ago</span>
+                <div>
+                    <h3>Congratulations! A new record</h3>
+                    <div>
+                        <span>Todays Sales Summary</span>
+                        <p>here are 1 people on your site right now and this is a new record. Your last record was
+                            0</span>
+                    </div>
+
+                    <div class="noti-delete">
+                        <span>delete</span>
+                        <span>mark as read</span>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <script src="main.js"></script>
+</body>
+
+</html>
