@@ -67,12 +67,9 @@ orderCard.forEach(e => {
         })
         e.style.height = "500px";
         e.querySelector(".o-bottombar").style.display = "flex";
-        e.querySelector(".o-bottombar").style.opacity = "1";
         }
         else {
             e.style.height = "100px";
-            e.querySelector(".o-bottombar").style.opacity = "0";
-            e.querySelector(".o-bottombar").style.display = "none";
         }
     });
 })
