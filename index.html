@@ -46,7 +46,7 @@
                 </div>
             </div>
             <div class="main-context">
-                <div class="tabs-item active dashboard">
+                <div class="tabs-item hidden dashboard">
 
                     <h1>Dashboard</h1>
                     <div class="context-card-container">
@@ -77,22 +77,22 @@
                     </div>
                 </div>
 
-                <div class="order tabs-item hidden">
+                <div class="order tabs-item active">
                     <div class="order-topbar">
                         <h1>Order</h1>
                         <button>+ &nbsp;Add order</button>
                     </div>
                     <div class="order-tabs">
                         <div class="order-tabs-desc">
-                            <p>All order <span>78</span></p>
-                            <p>Processing <span>21</span></p>
-                            <p>Confirm <span>2</span></p>
-                            <p>Processing <span>21</span></p>
-                            <p>In transit <span>21</span></p>
-                            <p>Deliverd <span>21</span></p>
-                            <p>Return <span>21</span></p>
-                            <p>Cancel <span>21</span></p>
-                            <p>Trash <span>21</span></p>
+                            <button class="tab-bg" order-filter="all">All order <span>(2)</span></button>
+                            <button order-filter="process">process <span>(1)</span></button>
+                            <button order-filter="confirm">Confirm <span>(1)</span></button>
+                            <button order-filter="processing">Processing <span>(1)</span></button>
+                            <button order-filter="transit">In transit <span>(1)</span></button>
+                            <button order-filter="deliver">Deliverd <span>(1)</span></button>
+                            <button order-filter="return">Return <span>(1)</span></button>
+                            <button order-filter="cancel">Cancel <span>(1)</span></button>
+                            <button order-filter="trash">Trash <span>(1)</span></button>
                         </div>
                         <input type="text" placeholder="search order..." class="search-order">
                     </div>
@@ -110,14 +110,15 @@
                             }
                         })
                             .then(response => response.json())
-                            .then(data => console.log(JSON.stringify(data)))
+
                     </script>
 
                     <!-- order card start -->
-                    <div class="order-card">
+                    <div class="order-card" order-filter="deliver">
                         <div class="o-topbar">
                             <div class="otb-left">
-                                <p class="otb-1">order_id</p>
+                                <p class="otb-1">1250</p>
+                                <p class="cc-name">Md Rokibul Islam</p>
                                 <div class="otb-process">
                                     <div class="otb2"></div>
                                     <span class="otb3">order_status</span>
@@ -158,19 +159,21 @@
                                     <p class="obb-s-id">122 Dhaka, Motizil <br>Near Idris Market, Kolatoli, <br>Dhaka
                                     </p>
                                 </div>
-                            </div>
-                            <div class="obb-right">
 
+                            </div>
+                            <div>
+                                <!-- no data here you can add some more -->
                             </div>
                         </div>
                     </div>
                     <!-- order card end -->
 
 
-                    <div class="order-card">
+                    <div class="order-card" order-filter="process">
                         <div class="o-topbar">
                             <div class="otb-left">
                                 <p class="otb-1">12452</p>
+                                <p class="cc-name">Salim khan</p>
                                 <div class="otb-process">
                                     <div class="otb2"></div>
                                     <span class="otb3">Processing</span>
@@ -215,6 +218,172 @@
                             </div>
                             <div class="obb-right">
 
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- order 3 -->
+
+                    <div class="order-card" order-filter="confirm">
+                        <div class="o-topbar">
+                            <div class="otb-left">
+                                <p class="otb-1">1250</p>
+                                <p class="cc-name">Md Rokibul Islam</p>
+                                <div class="otb-process">
+                                    <div class="otb2"></div>
+                                    <span class="otb3">order_status</span>
+                                </div>
+                                <div class="otb-time">
+                                    21 Sep 2023 tue <br> 12:10 PM
+                                </div>
+                                <img src="https://assorted.downloads.oppo.com/static/assets/products/oppo-watch-1/images/1920/convenience/sec1-cimg1-3ec5d106e1b4e26d9361b56dfd1f936b.png" alt="img" class="ot-img">
+                            </div>
+                            <div class="otb-price">
+                                order_price
+                            </div>
+                        </div>
+                        <div class="o-bottombar">
+                            <div class="obb-left">
+                                <img src="https://assorted.downloads.oppo.com/static/assets/products/oppo-watch-1/images/1920/convenience/sec1-cimg1-3ec5d106e1b4e26d9361b56dfd1f936b.png" alt="img" class="obb-l-img">
+                                <div class="obb-heading">
+                                    <p>product_name</p>
+                                    <p>order_price * <span class="obb-quantity">order_quantity</span> = total_price</p>
+                                </div>
+                            </div>
+                            <div class="obb-center">
+                                <div class="obb-billing-address">
+                                    <p class="obb-h">Billing Address</p>
+                                    <p class="obb-bl-n">Shitol jorna R/A, Kulgaon, <br>Jalalabad, Baizid
+                                        Bostami,<br>Chattogram</p>
+                                </div>
+                                <div class="obb-email">
+                                    <p class="obb-h">Email</p>
+                                    <a class="obb-email-id">johndoe@gmail.com</a>
+                                </div>
+                                <div class="obb-telephone">
+                                    <p class="obb-h">Telephone</p>
+                                    <a class="obb-tl-id">+88 01542369525</a>
+                                </div>
+                                <div class="obb-shipping-address">
+                                    <p class="obb-h">Shipping Adress</p>
+                                    <p class="obb-s-id">122 Dhaka, Motizil <br>Near Idris Market, Kolatoli, <br>Dhaka
+                                    </p>
+                                </div>
+
+                            </div>
+                            <div>
+                                <!-- no data here you can add some more -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- order 4 -->
+
+                    <div class="order-card" order-filter="confirm">
+                        <div class="o-topbar">
+                            <div class="otb-left">
+                                <p class="otb-1">1250</p>
+                                <p class="cc-name">Md Rokibul Islam</p>
+                                <div class="otb-process">
+                                    <div class="otb2"></div>
+                                    <span class="otb3">order_status</span>
+                                </div>
+                                <div class="otb-time">
+                                    21 Sep 2023 tue <br> 12:10 PM
+                                </div>
+                                <img src="https://assorted.downloads.oppo.com/static/assets/products/oppo-watch-1/images/1920/convenience/sec1-cimg1-3ec5d106e1b4e26d9361b56dfd1f936b.png" alt="img" class="ot-img">
+                            </div>
+                            <div class="otb-price">
+                                order_price
+                            </div>
+                        </div>
+                        <div class="o-bottombar">
+                            <div class="obb-left">
+                                <img src="https://assorted.downloads.oppo.com/static/assets/products/oppo-watch-1/images/1920/convenience/sec1-cimg1-3ec5d106e1b4e26d9361b56dfd1f936b.png" alt="img" class="obb-l-img">
+                                <div class="obb-heading">
+                                    <p>product_name</p>
+                                    <p>order_price * <span class="obb-quantity">order_quantity</span> = total_price</p>
+                                </div>
+                            </div>
+                            <div class="obb-center">
+                                <div class="obb-billing-address">
+                                    <p class="obb-h">Billing Address</p>
+                                    <p class="obb-bl-n">Shitol jorna R/A, Kulgaon, <br>Jalalabad, Baizid
+                                        Bostami,<br>Chattogram</p>
+                                </div>
+                                <div class="obb-email">
+                                    <p class="obb-h">Email</p>
+                                    <a class="obb-email-id">johndoe@gmail.com</a>
+                                </div>
+                                <div class="obb-telephone">
+                                    <p class="obb-h">Telephone</p>
+                                    <a class="obb-tl-id">+88 01542369525</a>
+                                </div>
+                                <div class="obb-shipping-address">
+                                    <p class="obb-h">Shipping Adress</p>
+                                    <p class="obb-s-id">122 Dhaka, Motizil <br>Near Idris Market, Kolatoli, <br>Dhaka
+                                    </p>
+                                </div>
+
+                            </div>
+                            <div>
+                                <!-- no data here you can add some more -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- order 6 -->
+
+
+                    <div class="order-card" order-filter="cancel">
+                        <div class="o-topbar">
+                            <div class="otb-left">
+                                <p class="otb-1">1250</p>
+                                <p class="cc-name">Md Rokibul Islam</p>
+                                <div class="otb-process">
+                                    <div class="otb2"></div>
+                                    <span class="otb3">order_status</span>
+                                </div>
+                                <div class="otb-time">
+                                    21 Sep 2023 tue <br> 12:10 PM
+                                </div>
+                                <img src="https://assorted.downloads.oppo.com/static/assets/products/oppo-watch-1/images/1920/convenience/sec1-cimg1-3ec5d106e1b4e26d9361b56dfd1f936b.png" alt="img" class="ot-img">
+                            </div>
+                            <div class="otb-price">
+                                order_price
+                            </div>
+                        </div>
+                        <div class="o-bottombar">
+                            <div class="obb-left">
+                                <img src="https://assorted.downloads.oppo.com/static/assets/products/oppo-watch-1/images/1920/convenience/sec1-cimg1-3ec5d106e1b4e26d9361b56dfd1f936b.png" alt="img" class="obb-l-img">
+                                <div class="obb-heading">
+                                    <p>product_name</p>
+                                    <p>order_price * <span class="obb-quantity">order_quantity</span> = total_price</p>
+                                </div>
+                            </div>
+                            <div class="obb-center">
+                                <div class="obb-billing-address">
+                                    <p class="obb-h">Billing Address</p>
+                                    <p class="obb-bl-n">Shitol jorna R/A, Kulgaon, <br>Jalalabad, Baizid
+                                        Bostami,<br>Chattogram</p>
+                                </div>
+                                <div class="obb-email">
+                                    <p class="obb-h">Email</p>
+                                    <a class="obb-email-id">johndoe@gmail.com</a>
+                                </div>
+                                <div class="obb-telephone">
+                                    <p class="obb-h">Telephone</p>
+                                    <a class="obb-tl-id">+88 01542369525</a>
+                                </div>
+                                <div class="obb-shipping-address">
+                                    <p class="obb-h">Shipping Adress</p>
+                                    <p class="obb-s-id">122 Dhaka, Motizil <br>Near Idris Market, Kolatoli, <br>Dhaka
+                                    </p>
+                                </div>
+
+                            </div>
+                            <div>
+                                <!-- no data here you can add some more -->
                             </div>
                         </div>
                     </div>

@@ -31,10 +31,19 @@
     margin-top: 2rem;
     border-bottom: 0.5px solid rgba(128, 128, 128, 0.233);
 }
-.order-tabs .order-tabs-desc{
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.order-tabs .order-tabs-desc > button{
+    outline: none;
+    border: none;
+    padding: 7px 10px ;
+    display: inline-block;
+    margin-right: 1rem;
+    cursor: pointer;
+    position: relative;
+}
+
+
+.order-tabs .order-tabs-desc > button span {
+    
 }
 .order-tabs p {
     margin-right: 2rem;
@@ -102,6 +111,7 @@
     font-size: 1.2rem;
     color: gray;
     font-weight: 400;
+    width: 50px;
 }
 
 .otb-process {
@@ -110,6 +120,11 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
+}
+
+.cc-name {
+    width: 150px;
+    margin-left: 3rem;
 }
 
 .otb2 {
@@ -124,6 +139,7 @@
     margin-top: 5px;
     text-transform: uppercase;
     color: skyblue;
+    width: 70px;
 }
 
 .otb-time {
@@ -150,6 +166,13 @@
 .obb-left {
     display: flex;
     align-items: center;
+}
+
+.obb-center {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3rem;
+    margin: 2rem 1rem;
 }
 
 .obb-l-img {

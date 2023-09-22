@@ -95,9 +95,7 @@ uBtn.addEventListener("click", () => {
 })
 
 // card user button end here
-// 
 
-// Custom JS Comment:
 // add user div access here
 
 
@@ -113,12 +111,48 @@ utBtn.addEventListener("click", () => {
     }
 })
 
-// Custom JS Comment:
+
 // close user div
 
 uClose.onclick = () => {
     document.querySelector(".add-user").style.display = "none";
 }
+
+
+// order filtering goes here
+
+const orderFilterBtn = document.querySelectorAll(".order-tabs-desc button");
+const orderItem = document.querySelectorAll(".order-card");
+
+
+orderItem.forEach((ea) => {
+
+    orderFilterBtn.forEach(e => {
+        e.addEventListener("click", () => {
+
+            orderFilterBtn.forEach(l => {
+                l.classList.remove("tab-bg");
+            })
+
+            e.classList.add("tab-bg");
+
+            let ev = e.getAttribute('order-filter').toLowerCase();
+            if (ev == ea.getAttribute('order-filter') ) {
+                ea.style.display = "block";
+            }
+            else {
+                ea.style.display = "none"
+            }
+
+            if (ev == "all") {
+                ea.style.display = "block"
+            }
+        })
+    })
+})
+
+// order filter end here
+// 
 
 
 
