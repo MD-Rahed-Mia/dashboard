@@ -5,6 +5,9 @@ const sidebarLi = document.querySelectorAll("#sidebar ul li i");
 const tabs = document.querySelectorAll(".tabs-item");
 const orderCard = document.querySelectorAll(".order-card");
 const order = document.querySelector(".order");
+const uBtn = document.querySelector(".u-btn");
+const utBtn = document.querySelector(".ut-btn");
+const uClose = document.querySelector(".u-close");
 
 const orderTouch = document.querySelector(".order-visible");
 
@@ -24,6 +27,8 @@ notiCancel.addEventListener("click", () => {
 //     })
 // });
 
+
+
 console.log(tabs);
 
 
@@ -37,23 +42,86 @@ sidebarLi.forEach((e, ind) => {
     })
 })
 
-orderCard.forEach(e => {
+sidebarLi.forEach((e) => {
     e.addEventListener("click", () => {
 
+    sidebarLi.forEach(es => {
+        es.style.backgroundColor = "transparent"
+    })
+    e.style.backgroundColor = "gray";
+    })
+})
+
+let orderclick = 1;
+orderCard.forEach(e => {
+
+
+    e.addEventListener("click", () => {
+        orderclick++;
+        if (orderclick % 2 == 0) {
         orderCard.forEach(es => {
             es.style.height = "100px";
             es.querySelector(".o-bottombar").style.display = "none";
-            
-        })
 
-        console.log("click");
+
+        })
         e.style.height = "500px";
         e.querySelector(".o-bottombar").style.display = "flex";
+        e.querySelector(".o-bottombar").style.opacity = "1";
+        }
+        else {
+            e.style.height = "100px";
+            e.querySelector(".o-bottombar").style.opacity = "0";
+            e.querySelector(".o-bottombar").style.display = "none";
+        }
     });
-
-    
 })
 
+
+// card user buttton here
+// 
+
+let isClick = false;
+
+uBtn.addEventListener("click", () => {
+    isClick = !isClick;
+
+    if (isClick) {
+        uBtn.style.backgroundColor = "gray";
+        uBtn.style.color = "lightgray";
+    }
+
+    else {
+        uBtn.style.backgroundColor = "cornflowerblue";
+        uBtn.style.color = "white";
+    }
+})
+
+// card user button end here
+// 
+
+// Custom JS Comment:
+// add user div access here
+
+
+
+utBtn.addEventListener("click", () => {
+    isClick = !false;
+
+    if (isClick) {
+    document.querySelector(".add-user").style.display = "block";
+    }
+    else {
+    document.querySelector(".add-user").style.display = "none";
+    }
+})
+
+// Custom JS Comment:
+// close user div
+
+uClose.onclick = () => {
+    document.querySelector(".add-user").style.display = "none";
+}
 
 
 

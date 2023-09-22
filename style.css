@@ -13,6 +13,7 @@
 
 body {
     background: whitesmoke;
+    width: 100%;
 }
 
 .hidden {
@@ -63,7 +64,6 @@ body {
     cursor: pointer;
     list-style-type: none;
     position: relative;
-    background: rgba(128, 128, 128, 0.267);
     color: white;
 }
 
@@ -332,7 +332,7 @@ body {
     color: gray;
 }
 
-
+co
 
 
 /* product starts from here */

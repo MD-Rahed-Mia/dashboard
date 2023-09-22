@@ -1,0 +1,169 @@
+
+.user-details {
+    display: grid;
+    grid-template-columns: repeat(6, 250px);
+    justify-content: space-around;
+    margin-top: 2rem;
+}
+.user-card {
+    width: 250px;
+    height: 300px;
+    box-shadow: 2px 3px 10px rgba(0, 0, 0, 0.2);
+    padding: 1rem;
+    text-align: center;
+    padding-top: 2rem;
+    position: relative;
+}
+
+.u-img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 2px solid green;
+    text-align: center;
+}
+
+.u-name {
+    margin-top: 1rem;
+    font-weight: 400;
+    color: gray;
+    text-transform: uppercase;
+}
+
+.u-email {
+    font-size: 0.8rem;
+    color: gray;
+    margin-top: 5px;
+}
+
+.u-s {
+    margin-top: 10px;
+    font-size: 0.8rem;
+    color: gray;
+}
+
+.u-s span {
+    border-radius: 10px;
+    padding: 5px;
+    background: rgba(211, 211, 211, 0.404);
+    color: coral;
+}
+
+.u-btn {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 10px;
+    background: cornflowerblue;
+    outline: none;
+    border: none;
+    padding: 5px 25px;
+    border-radius: 20px;
+    cursor: pointer;
+    color: white;
+    font-size: 1.2rem;
+    line-height: 100%;
+}
+
+/*
+ * Cadd new user starts here
+ * 
+ */
+
+ .add-user {
+    width: 400px;
+    min-height: 400px;
+    box-shadow: 2px 4px 15px rgb(211, 211, 211);
+    border-radius: 10px;
+    position: absolute;
+    top: 180px;
+    right: -100%;
+    background: white;
+    padding: 1rem;
+    transition: all 3s;
+    display: none;
+    right: 2rem;
+
+ }
+ .au-heading {
+    font-size: 1.2rem;
+    padding: 0.5rem;
+    font-weight: 600;
+    font-size: 1rem;
+ }
+
+ .add-user form {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+ }
+
+ .add-user form > div {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+    align-items: center;
+    font-size: 0.8rem;
+ }
+
+ .add-user input {
+    width: 250px;
+    padding: 8px;
+    margin-left: 1rem;
+    border-radius: 4px;
+    outline: none;
+    border: 1px solid rgba(211, 211, 211, 0.568);
+ }
+
+ .role-option {
+    width: 250px;
+    -webkit-appearance: none;
+    padding: 8px;
+    margin-left: 1rem;
+    border-radius: 4px;
+    outline: none;
+    border: 1px solid rgba(211, 211, 211, 0.568);
+ }
+
+ .role {
+    position: relative;
+ }
+
+ .roi {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 30px;
+}
+
+.role-option {
+    padding: 0.5rem;
+}
+
+.add-user-btn {
+    width: 120px;
+    padding: 0.5rem;
+    border: none;
+    outline: none;
+    background: rgb(57, 126, 255);
+    color: white;
+    font-size: 1rem;
+    border-radius: 4px;
+    position: absolute;
+    right: 30px;
+    bottom: 30px;
+    cursor: pointer;
+    box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.2);
+}
+
+.u-close {
+    font-size: 2rem;
+    color: black;
+    position: absolute;
+    top: 15px;
+    right: 10px;
+}

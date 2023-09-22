@@ -1,11 +1,11 @@
-<!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>control panel for woocommerce </title>
+    <title>EasyPanel - Manage Multiple WooCommerce</title>
     <link rel="stylesheet" href="order.css">
+    <link rel="stylesheet" href="user.css">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 </head>
@@ -39,125 +39,43 @@
 
         <div id="main-content">
             <div class="search-bar">
-                <input type="text" placeholder="search product, order, customer..." id="search">
+                <span>Welcome demo@gmail.com</span>
+                <!--<input type="text" placeholder="search product, order, customer..." id="search">-->
                 <div id="noti-icon">
                     <i class="fa-solid fa-bell" id="show-noti"></i>
                 </div>
             </div>
             <div class="main-context">
-                <div class="tabs-item dashboard active">
+                <div class="tabs-item hidden dashboard">
 
                     <h1>Dashboard</h1>
                     <div class="context-card-container">
                         <div>
                             <h1>0</h1>
-                            <span>Today order</span>
+                            <span>All Orders</span>
                         </div>
                         <div>
-
                             <h1>0</h1>
-                            <span>Today visitors</span>
+                            <span> visitors</span>
                         </div>
                         <div>
                             <h1>0</h1>
                             <span>Order-in-progress</span>
-
                         </div>
                         <div>
                             <h1>$&nbsp;0</h1>
                             <span>Today-sales</span>
-
                         </div>
                         <div>
                             <h1>$&nbsp;0</h1>
                             <span>Week-sales</span>
-
                         </div>
                         <div>
                             <h1>$&nbsp;0</h1>
                             <span>Monthly-sales</span>
-
-                        </div>
-                    </div>
-
-                    <div class="visitor-chart">
-                        <div class="online-visitor">
-                            <p>Online visitors</p>
-                            <h3>0</h3>
-                        </div>
-                        <div class="monthly-visitor">
-                            <div class="date-serial-count">
-                                <p></p>
-                                <p></p>
-                                <p></p>
-                                <p></p>
-                                <p></p>
-                                <p></p>
-                                <p></p>
-                                <p></p>
-                                <p></p>
-                                <p></p>
-                                <p></p>
-                                <p></p>
-                                <p></p>
-                                <p></p>
-                                <p></p>
-                                <p></p>
-                                <p></p>
-                                <p></p>
-                                <p></p>
-                                <p></p>
-                                <p></p>
-                                <p></p>
-                                <p></p>
-                                <p></p>
-                                <p></p>
-                                <p></p>
-                                <p></p>
-                                <p></p>
-                                <p></p>
-                                <p></p>
-                                <p></p>
-                                <p></p>
-                            </div>
-                            <div class="date-serial">
-                                <p>1</p>
-                                <p>2</p>
-                                <p>3</p>
-                                <p>4</p>
-                                <p>5</p>
-                                <p>6</p>
-                                <p>7</p>
-                                <p>8</p>
-                                <p>9</p>
-                                <p>10</p>
-                                <p>11</p>
-                                <p>12</p>
-                                <p>13</p>
-                                <p>14</p>
-                                <p>15</p>
-                                <p>16</p>
-                                <p>17</p>
-                                <p>18</p>
-                                <p>19</p>
-                                <p>20</p>
-                                <p>21</p>
-                                <p>22</p>
-                                <p>22</p>
-                                <p>24</p>
-                                <p>25</p>
-                                <p>26</p>
-                                <p>27</p>
-                                <p>28</p>
-                                <p>29</p>
-                                <p>30</p>
-                                <p>31</p>
-                            </div>
                         </div>
                     </div>
                 </div>
-
-
 
                 <div class="order tabs-item hidden">
                     <div class="order-topbar">
@@ -183,18 +101,84 @@
                     <div class="order-time">
                         <span>last week</span>
                     </div>
+
+                    <script>
+                        fetch('https://staging.skmeibangladesh.com/wp-json/wc/v3/orders', {
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'Authorization': 'Basic Y2tfNDQ4ZTk0NTM0YjE2YWUzZWRmZTA2M2RlMWM3ODRiM2M4ZDZlMWVkMTpjc183MDhjMjIzMDA4M2ZhMDQ5MzI2MTIwODU1NDM3MjdiYmFhZDBhNzM1',
+                            }
+                        })
+                            .then(response => response.json())
+                            .then(data => console.log(JSON.stringify(data)))
+                    </script>
+
+                    <!-- order card start -->
+                    <div class="order-card">
+                        <div class="o-topbar">
+                            <div class="otb-left">
+                                <p class="otb-1">order_id</p>
+                                <div class="otb-process">
+                                    <div class="otb2"></div>
+                                    <span class="otb3">order_status</span>
+                                </div>
+                                <div class="otb-time">
+                                    21 Sep 2023 tue <br> 12:10 PM
+                                </div>
+                                <img src="" alt="img" class="ot-img">
+                            </div>
+                            <div class="otb-price">
+                                order_price
+                            </div>
+                        </div>
+                        <div class="o-bottombar">
+                            <div class="obb-left">
+                                <img src="" alt="img" class="obb-l-img">
+                                <div class="obb-heading">
+                                    <p>product_name</p>
+                                    <p>order_price * <span class="obb-quantity">order_quantity</span> = total_price</p>
+                                </div>
+                            </div>
+                            <div class="obb-center">
+                                <div class="obb-billing-address">
+                                    <p class="obb-h">Billing Address</p>
+                                    <p class="obb-bl-n">Shitol jorna R/A, Kulgaon, <br>Jalalabad, Baizid
+                                        Bostami,<br>Chattogram</p>
+                                </div>
+                                <div class="obb-email">
+                                    <p class="obb-h">Email</p>
+                                    <a class="obb-email-id">johndoe@gmail.com</a>
+                                </div>
+                                <div class="obb-telephone">
+                                    <p class="obb-h">Telephone</p>
+                                    <a class="obb-tl-id">+88 01542369525</a>
+                                </div>
+                                <div class="obb-shipping-address">
+                                    <p class="obb-h">Shipping Adress</p>
+                                    <p class="obb-s-id">122 Dhaka, Motizil <br>Near Idris Market, Kolatoli, <br>Dhaka
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="obb-right">
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- order card end -->
+
+
                     <div class="order-card">
                         <div class="o-topbar">
                             <div class="otb-left">
                                 <p class="otb-1">12452</p>
-                            <div class="otb-process">
-                                <div class="otb2"></div>
-                                <span class="otb3">Processing</span>
-                            </div>
-                            <div class="otb-time">
-                                21 Sep 2023 tue <br> 12:10 PM
-                            </div>
-                            <img src="" alt="img" class="ot-img">
+                                <div class="otb-process">
+                                    <div class="otb2"></div>
+                                    <span class="otb3">Processing</span>
+                                </div>
+                                <div class="otb-time">
+                                    21 Sep 2023 tue <br> 12:10 PM
+                                </div>
+                                <img src="" alt="img" class="ot-img">
                             </div>
                             <div class="otb-price">
                                 $ 2150.00
@@ -206,13 +190,14 @@
                                 <div class="obb-heading">
                                     <p>
                                         Skmei 2049 - Rose Gold White</p>
-                                        <p>$ 2150.00 * <span class="obb-quantity">1</span> = $ 2150.00</p>
+                                    <p>$ 2150.00 * <span class="obb-quantity">1</span> = $ 2150.00</p>
                                 </div>
                             </div>
                             <div class="obb-center">
                                 <div class="obb-billing-address">
                                     <p class="obb-h">Billing Address</p>
-                                    <p class="obb-bl-n">Shitol jorna R/A, Kulgaon, <br>Jalalabad, Baizid Bostami,<br>Chattogram</p>
+                                    <p class="obb-bl-n">Shitol jorna R/A, Kulgaon, <br>Jalalabad, Baizid
+                                        Bostami,<br>Chattogram</p>
                                 </div>
                                 <div class="obb-email">
                                     <p class="obb-h">Email</p>
@@ -224,101 +209,120 @@
                                 </div>
                                 <div class="obb-shipping-address">
                                     <p class="obb-h">Shipping Adress</p>
-                                    <p class="obb-s-id">122 Dhaka, Motizil <br>Near Idris Market, Kolatoli, <br>Dhaka</p>
+                                    <p class="obb-s-id">122 Dhaka, Motizil <br>Near Idris Market, Kolatoli, <br>Dhaka
+                                    </p>
                                 </div>
                             </div>
                             <div class="obb-right">
 
                             </div>
                         </div>
-                    </div> <div class="order-card">
-                        <div class="o-topbar">
-                            <div class="otb-left">
-                                <p class="otb-1">12452</p>
-                            <div class="otb-process">
-                                <div class="otb2"></div>
-                                <span class="otb3">Processing</span>
-                            </div>
-                            <div class="otb-time">
-                                21 Sep 2023 tue <br> 12:10 PM
-                            </div>
-                            <img src="" alt="img" class="ot-img">
-                            </div>
-                            <div class="otb-price">
-                                $ 2150.00
-                            </div>
-                        </div>
-                        <div class="o-bottombar">
-                            <div class="obb-left">
-                                <img src="" alt="img" class="obb-l-img">
-                                <div class="obb-heading">
-                                    <p>
-                                        Skmei 2049 - Rose Gold White</p>
-                                        <p>$ 2150.00 * <span class="obb-quantity">1</span> = $ 2150.00</p>
-                                </div>
-                            </div>
-                            <div class="obb-center">
-                                <div class="obb-billing-address">
-                                    <p class="obb-h">Billing Address</p>
-                                    <p class="obb-bl-n">Shitol jorna R/A, Kulgaon, <br>Jalalabad, Baizid Bostami,<br>Chattogram</p>
-                                </div>
-                                <div class="obb-email">
-                                    <p class="obb-h">Email</p>
-                                    <a class="obb-email-id">johndoe@gmail.com</a>
-                                </div>
-                                <div class="obb-telephone">
-                                    <p class="obb-h">Telephone</p>
-                                    <a class="obb-tl-id">+88 01542369525</a>
-                                </div>
-                                <div class="obb-shipping-address">
-                                    <p class="obb-h">Shipping Adress</p>
-                                    <p class="obb-s-id">122 Dhaka, Motizil <br>Near Idris Market, Kolatoli, <br>Dhaka</p>
-                                </div>
-                            </div>
-                            <div class="obb-right">
-                                
-                            </div>
-                        </div>
                     </div>
                 </div>
+
+
+
+                <div class="users hidden tabs-item active">
+                    <div class="order-topbar">
+                        <h1>Users</h1>
+                        <button class="ut-btn">+ &nbsp;Add user</button>
+                    </div>
+
+                    <!-- user card goes here -->
+
+                    <div class="user-details">
+                        <div class="user-card">
+                            <img src="https://www.nortonrosefulbright.com/-/media/images/nrf/nrfweb/cvs/uploaded/rahul-mansigani150x150png.png?revision=&revision=4611686018427387904"
+                                alt="user" class="u-img">
+                            <p class="u-name">Md Rahed</p>
+                            <p class="u-email">demo@gmail.com</p>
+                            <div class="u-status">
+                                <p class="u-s">Status: <span>Moderator</span></p>
+                            </div>
+                            <button class="u-btn">Active</button>
+                        </div>
+                        <div class="user-card">
+                            user 1
+                        </div>
+                        <div class="user-card">
+                            user 1
+                        </div>
+                        <div class="user-card">
+                            user 1
+                        </div>
+                    </div>
+
+                    <!-- add user card starts here -->
+
+                    <div class="add-user">
+                        <h1 class="au-heading">New User</h1><ion-icon name="close-outline" class="u-close"></ion-icon>
+                        <hr>
+                        <form>
+                            <div class="name">
+                                <label for="">Name</label>
+                                <input type="text" required name="name" placeholder="user name">
+                            </div>
+                            <div class="email">
+                                <label for="">Email</label>
+                                <input type="text" name="name" placeholder="user name">
+                            </div>
+                            <div class="phone">
+                                <label for="">Number</label>
+                                <input type="number" name="number" placeholder="number">
+                            </div>
+                            <div class="role">
+                                <label for="">Role</label>
+                                <select name="role" class="role-option">
+                                    <option value="Editor">Select role</option>
+                                    <option value="Editor">Editor</option>
+                                    <option value="Moderator">Moderator</option>
+                                    <option value="Admin">Admin</option>
+                                    <option value="Visitor">Visitor</option>
+                                </select>
+                                <i class="fa-solid roi fa-chevron-down"></i>
+                            </div>
+
+                            <button class="add-user-btn" type="button">Add User</button>
+                        </form>
+                    </div>
+
+                </div>
+
+                <!-- users end here -->
+
+
+
+                <div class="logout tabs-item hidden">
+                    <h1>123</h1>
+                </div>
+                <div class="logout tabs-item hidden">
+                    <h1>124</h1>
+                </div>
+                <div class="logout tabs-item hidden">
+                    <h1>125</h1>
+                </div>
+                <div class="logs tabs-item hidden">
+                    <h1>Logs</h1>
+                </div>
+                <div class="websites tabs-item hidden">
+                    <div class="order-topbar">
+                        <h1>Websites</h1>
+                        <button>+ &nbsp;Add website</button>
+                    </div>
+                </div>
+                <div class="settings tabs-item hidden">
+                    <h1>Settings</h1>
+                </div>
+                <div class="logout tabs-item hidden">
+                    <h1>Logout</h1>
+                </div>
+
             </div>
-
-            <div class="product hidden tabs-item">
-                <h1>Product</h1>
-                <div class="product-catergories">
-                    <button>Products</button>
-                    <button>Categories</button>
-                    <button>Attributes</button>
-                </div>
-                <p class="xl2">All products</p>
-
-                <div class="product-card">
-                    <div class="pc-visible">
-                        <img src="" alt="img" class="pi1">
-                        <p class="xl18">Skmei 850 - Silver Gold</p>
-                        <div class="xl13">
-                            <span class="xl20">Men</span>
-                            <div class="xl14">
-                                $ 1850.00
-                                <span class="xl19">$ 2030.00</span>
-                            </div>
-                            <div class="xl15">
-                                out of stock
-                            </div>
-                            <div class="xl16">
-                                <div class="xl17"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="p-hide">
-
-                    </div>
-                </div>
-
-            </div>
+            <!-- main end -->
 
         </div>
     </div>
+
     <div class="notification">
         <h1>Notification</h1>
         <i class="fa-solid noti-cancel fa-xmark"></i>
@@ -376,6 +380,9 @@
 
     </div>
 
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <script src="main.js"></script>
 </body>
 
