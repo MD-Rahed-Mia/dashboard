@@ -1,0 +1,160 @@
+
+
+
+.dashboard-website-list {
+  margin-top: 2rem;
+  position: relative;
+}
+
+.wb-heading {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 1rem;
+}
+
+.wb-heading p {
+  padding: 10px;
+  background: #1E90FF;
+  color: white;
+  cursor: pointer;
+  font-size: 0.8rem;
+  text-transform: lowercase;
+}
+
+.wb-heading button {
+  padding: 10px 20px;
+  background: #1E90FF;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+.wb-list {
+  margin-top: 2rem;
+
+}
+
+.wb-card {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  min-height: 100px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  position: relative;
+}
+
+.wb-card li {
+  list-style-type: none;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 80px;
+}
+
+.wb-card li:nth-child(1) {
+  border-right: 2px solid rgba(0, 0, 0, 0.22);
+  padding: 1rem 20px;
+  min-width: 100px;
+}
+
+.wb-card li:nth-child(1) i {
+  font-size: 1.5rem;
+  color: #1E90FF;
+}
+
+.wb-card > div:nth-child(1) {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+.wb-img {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  margin: 0 5rem;
+}
+
+.wb-name {
+  margin-right: 5rem;
+  font-size: 1.2rem;
+}
+
+.wb-ls-visit {
+  margin-right: 3rem;
+  font-size: 0.8rem;
+}
+
+.wb-c-edit i{
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 50px;
+  font-size: 1.5rem;
+  color: #1E90FF;
+  cursor: pointer;
+}
+
+.wb-url-l {
+  color: black;
+  font-size: 0.8rem;
+}
+
+.add-n-website {
+  padding: 1rem;
+  box-shadow: rgba(0, 0, 0, 0.20) 0px 3px 8px;
+  width: 500px;
+  min-height: 300px;
+  position: absolute;
+  right: 0px;
+  top: 0;
+  background: white;
+  border-radius: 5px;
+  transform: scale(0);
+  transition: all 0.5s;
+}
+
+.add-n-website h1 {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.add-n-website div {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+}
+
+.add-n-website div input {
+  width:350px;
+  padding: 5px;
+  font-size: .8rem;
+
+}
+
+.awn-btn {
+  width: 120px;
+  margin: 1rem auto;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  padding: 0.5rem;
+  transform: translateX(-50%);
+  text-align: center;
+  border: none;
+  background: #1E90FF;
+  color: white;
+  box-shadow: 2px 1px 5px rgba(100, 100, 111, 0.2);
+  cursor: pointer;
+}
+
+.awn-c-btn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  font-size: 1.8rem;
+  color: #1E90FF;
+  cursor: pointer;
+}

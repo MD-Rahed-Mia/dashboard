@@ -3,11 +3,11 @@ const notiCancel = document.querySelector(".noti-cancel");
 const notification = document.querySelector(".notification");
 const sidebarLi = document.querySelectorAll("#sidebar ul li i");
 const tabs = document.querySelectorAll(".tabs-item");
-const orderCard = document.querySelectorAll(".order-card");
-const order = document.querySelector(".order");
 const uBtn = document.querySelector(".u-btn");
 const utBtn = document.querySelector(".ut-btn");
 const uClose = document.querySelector(".u-close");
+
+let isClick = false;
 
 const orderTouch = document.querySelector(".order-visible");
 
@@ -52,33 +52,36 @@ sidebarLi.forEach((e) => {
     })
 })
 
-let orderclick = 1;
-orderCard.forEach(e => {
+// order card click functionality here
+// // 
 
+// const orderTopbar = document.querySelectorAll(".o-topbar");
+// const orderCard = document.querySelectorAll(".order-card");
 
-    e.addEventListener("click", () => {
-        orderclick++;
-        if (orderclick % 2 == 0) {
-        orderCard.forEach(es => {
-            es.style.height = "100px";
-            es.querySelector(".o-bottombar").style.display = "none";
+// orderTopbar.forEach((e) => {
+//     e.addEventListener("click", ()=> {
 
+//         isClick = !isClick;
 
-        })
-        e.style.height = "500px";
-        e.querySelector(".o-bottombar").style.display = "flex";
-        }
-        else {
-            e.style.height = "100px";
-        }
-    });
-})
+//         orderTopbar.forEach((ls) => {
+//             ls.parentElement.style.height = "100px";
+//         });
+
+//         if (isClick) {
+//         e.parentElement.style.height = "500px";
+//         }
+//         else {
+//             e.parentElement.style.height = "100px"
+//         }
+//     })
+// })
+
+// order card functionality end here
+// 
 
 
 // card user buttton here
 // 
-
-let isClick = false;
 
 uBtn.addEventListener("click", () => {
     isClick = !isClick;
@@ -104,10 +107,7 @@ utBtn.addEventListener("click", () => {
     isClick = !false;
 
     if (isClick) {
-    document.querySelector(".add-user").style.display = "block";
-    }
-    else {
-    document.querySelector(".add-user").style.display = "none";
+    document.querySelector(".add-user").style.transform = "scale(1)";
     }
 })
 
@@ -115,7 +115,7 @@ utBtn.addEventListener("click", () => {
 // close user div
 
 uClose.onclick = () => {
-    document.querySelector(".add-user").style.display = "none";
+    document.querySelector(".add-user").style.transform = "scale(0)";
 }
 
 
@@ -153,6 +153,25 @@ orderItem.forEach((ea) => {
 
 // order filter end here
 // 
+
+
+// order status here
+// 
+
+const statusBtn = document.querySelectorAll(".order-status button");
+
+
+statusBtn.forEach(element => {
+    
+    element.addEventListener("click", ()=> {
+        let myDivObjBgColor = window.getComputedStyle(element).backgroundColor;
+
+        document.querySelector(".otb2").style.backgroundColor = myDivObjBgColor;
+        document.querySelector(".otb3").style.color = myDivObjBgColor;
+        document.querySelector(".otb3").textContent = element.innerHTML;
+
+});
+});
 
 
 

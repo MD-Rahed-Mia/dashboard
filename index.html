@@ -46,7 +46,7 @@
                 </div>
             </div>
             <div class="main-context">
-                <div class="tabs-item hidden dashboard">
+                <div class="tabs-item dashboard">
 
                     <h1>Dashboard</h1>
                     <div class="context-card-container">
@@ -87,12 +87,12 @@
                             <button class="tab-bg" order-filter="all">All order <span>(2)</span></button>
                             <button order-filter="process">process <span>(1)</span></button>
                             <button order-filter="confirm">Confirm <span>(1)</span></button>
-                            <button order-filter="processing">Processing <span>(1)</span></button>
                             <button order-filter="transit">In transit <span>(1)</span></button>
                             <button order-filter="deliver">Deliverd <span>(1)</span></button>
                             <button order-filter="return">Return <span>(1)</span></button>
                             <button order-filter="cancel">Cancel <span>(1)</span></button>
                             <button order-filter="trash">Trash <span>(1)</span></button>
+                            <button order-filter="pending-payment">Pending Payment <span>(1)</span></button>
                         </div>
                         <input type="text" placeholder="search order..." class="search-order">
                     </div>
@@ -165,6 +165,16 @@
                                 <!-- no data here you can add some more -->
                             </div>
                         </div>
+                        <div class="order-status">
+                            <button>Process</button>
+                            <button>confirm</button>
+                            <button>In transit</button>
+                            <button>Delivered</button>
+                            <button>Return</button>
+                            <button>Cancel</button>
+                            <button>Trash</button>
+                            <button>Pending payment</button>
+                        </div>
                     </div>
                     <!-- order card end -->
 
@@ -220,6 +230,7 @@
 
                             </div>
                         </div>
+
                     </div>
 
                     <!-- order 3 -->

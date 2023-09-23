@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EasyPanel 2- Manage Multiple WooCommerce</title>
+  <link rel="stylesheet" href="order.css">
+  <link rel="stylesheet" href="user.css">
+  <link rel="stylesheet" href="dashboard.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+
+<body>
+
+  <div class="wrapper">
+    <div id="sidebar">
+      <ul>
+        <li data-name="Dashboard active">
+          <i class="fa-solid fa-database"></i>
+        </li>
+        <li data-name="Cart">
+          <i class="fa-solid fa-cart-shopping"></i>
+        </li>
+        <li data-name="User">
+          <i class="fa-solid fa-user"></i>
+        </li>
+        <li data-name="Chart">
+          <i class="fa-solid fa-chart-pie"></i>
+
+        </li>
+        <li data-name="Link"><i class="fa-solid fa-ribbon"></i></li>
+        <li data-name="Website"><i class="fa-solid fa-up-right-from-square"></i></li>
+        <li data-name="Message"><i class="fa-solid fa-message"></i></i></li>
+        <li data-name="Pin"><i class="fa-solid fa-thumbtack"></i></i></li>
+        <li data-name="Settings"><i class="fa-solid fa-gear"></i></li>
+        <li data-name="Logout"><i class="fa-solid fa-power-off"></i></li>
+      </ul>
+    </div>
+
+    <div id="main-content">
+      <div class="search-bar">
+        <span>Welcome demo@gmail.com</span>
+        <!--<input type="text" placeholder="search product, order, customer..." id="search">-->
+        <div id="noti-icon">
+          <i class="fa-solid fa-bell" id="show-noti"></i>
+        </div>
+      </div>
+      <div class="main-context">
+        <div class="tabs-item active dashboard">
+          <h1>Dashboard</h1>
+          <div class="dashboard-website-list">
+            <div class="wb-heading">
+              <p>All Website</p>
+              <button class="awn-btn-1">add website</button>
+            </div>
+            <div class="wb-list">
+              <div class="wb-card">
+                <div>
+                  <li><i class="fa-regular fa-square-check"></i></li>
+                  <li>#122</li></div>
+                <li><img src="https://img.freepik.com/premium-photo/image-colorful-galaxy-sky-generative-ai_791316-9864.jpg?w=2000" alt="wb-logo" class="wb-img"></li>
+                <li class="wb-name">website Name</li>
+                <li class="wb-ls-visit">23/05.2022 tue <br>07:05 PM
+                </li>
+                <li class="wb-c-edit"> <i class="fa-solid fa-pen-to-square"></i></li>
+                <li><a href="https://fontawesome.com/icons/square-check?f=classic&s=regular" class="wb-url-l">https://fontawesome.com/icons/square-check?f=classic&s=regular</a></li>
+              </div>
+            </div>
+
+            <!-- new website add -->
+
+            <div class="add-n-website">
+              <h1>connect website</h1>
+              <form action="">
+                <div class="awn-link">
+                  <label for="link">website url</label>
+                  <input type="text" placeholder="website url.....">
+                </div>
+                <div class="awn-title">
+                  <label for="link">website title</label>
+                  <input type="text" placeholder="website title.....">
+                </div>
+              </form>
+              <button class="awn-btn" type="submit">connect</button>
+              <i class="fa-solid awn-c-btn fa-xmark"></i>
+            </div>
+
+            <!-- addwebsite js code here -->
+            
+            <script>
+              let awnBtn = document.querySelector(".awn-c-btn");
+              let addWebsiteCard = document.querySelector(".add-n-website");
+              let addNewbtn = document.querySelector(".awn-btn-1");
+
+              addNewbtn.onclick = () => {
+                addWebsiteCard.style.transform = "scale(1)";
+              }
+              awnBtn.onclick = () =>{
+                addWebsiteCard.style.transform = "scale(0)";
+              }
+            </script>
+
+
+          </div>
+        </div>
+
+        <div class="order tabs-item hidden">
+          <div class="order-topbar">
+            <h1>Order</h1>
+            <button>+ &nbsp;Add order</button>
+          </div>
+          <div class="order-tabs">
+            <div class="order-tabs-desc">
+              <button class="tab-bg" order-filter="all">All order (<span id="all_order">0</span>)</button>
+              <button order-filter="process">process <span>(1)</span></button>
+              <button order-filter="confirmed">Confirm<span>(1)</span></button>
+              <button order-filter="processing">Processing <span>(1)</span></button>
+              <button order-filter="transit">In transit <span>(1)</span></button>
+              <button order-filter="deliver">Deliverd <span>(1)</span></button>
+              <button order-filter="return">Return <span>(1)</span></button>
+              <button order-filter="cancel">Cancel <span>(1)</span></button>
+              <button order-filter="trash">Trash <span>(1)</span></button>
+            </div>
+            <input type="text" placeholder="search order..." class="search-order">
+          </div>
+
+
+          <div class="order-time">
+            <!--<span>last week</span>-->
+          </div>
+
+          <script>
+
+            fetch('https://staging.skmeibangladesh.com/wp-json/wc/v3/orders', {
+              headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Basic Y2tfNDQ4ZTk0NTM0YjE2YWUzZWRmZTA2M2RlMWM3ODRiM2M4ZDZlMWVkMTpjc183MDhjMjIzMDA4M2ZhMDQ5MzI2MTIwODU1NDM3MjdiYmFhZDBhNzM1',
+              }
+            })
+              .then((response) => response.json())
+              .then(data => orderList(data));
+            function orderList(data) {
+
+              console.log(data);
+              document.getElementById("all_order").innerHTML = data.length;
+              data.forEach(function (obj) {
+                document.getElementById("order").innerHTML += `<div class="order-card" order-filter="${obj.status}">
+                        <div class="o-topbar">
+                            <div class="otb-left">
+                                <p class="otb-1">${obj.id}</p>
+                                <p class="cc-name">${obj.billing.first_name}</p>
+                                <div class="otb-process">
+                                    <div class="otb2"></div>
+                                    <span class="otb3">${obj.status}</span>
+                                </div>
+                                <div class="otb-time">
+                                    ${obj.date_created} <br> ${obj.payment_method_title}
+                        
+                                </div>
+                                <img src="${obj.line_items[0].image.src}" alt="img" class="ot-img">
+                            </div>
+                            <div class="otb-price">
+                                ${obj.total}
+                            </div>
+                        </div>
+                        <div class="o-bottombar">
+                            <div class="obb-left">
+                                <img src="${obj.line_items[0].image.src}" class="obb-l-img">
+                                <div class="obb-heading">
+                                    <p>product_name</p>
+                                    <p>${obj.total} * <span class="obb-quantity">1</span> = ${obj.total}</p>
+                                </div>
+                            </div>
+                            <div class="obb-center">
+                                <div class="obb-billing-address"> 
+                                  <i class="fa-solid fa-pen-to-square" id="edit-ob-address"></i>
+                                    <p class="obb-h">Billing Address</p>
+                                    <p class="obb-bl-n">${obj.billing.address_1}
+                                </div>
+                                <div class="obb-email">
+                                  <i class="fa-solid fa-pen-to-square" id="edit-ob-address"></i>
+                                    <p class="obb-h">Email</p>
+                                    <a class="obb-email-id">${obj.billing.email}</a>
+                                </div>
+                                <div class="obb-telephone">
+                                  <i class="fa-solid fa-pen-to-square" id="edit-ob-address"></i>
+                                    <p class="obb-h">Telephone</p>
+                                    <a class="obb-tl-id">+88 01542369525</a>
+                                </div>
+                                <div class="obb-shipping-address">
+                                  <i class="fa-solid fa-pen-to-square" id="edit-ob-address"></i>
+                                    <p class="obb-h">Shipping Adress</p>
+                                    <p class="obb-s-id">122 Dhaka, Motizil <br>Near Idris Market, Kolatoli, <br>Dhaka
+                                    </p>
+                                </div>
+
+                            </div>
+                            <div>
+                                <!-- no data here you can add some more -->
+                            </div>
+                            
+                        </div>
+                        <div class="order-status">
+                            <button>Process</button>
+                            <button>confirm</button>
+                            <button>In transit</button>
+                            <button>Delivered</button>
+                            <button>Return</button>
+                            <button>Cancel</button>
+                            <button>Trash</button>
+                            <button>Pending payment</button>
+                            <button>Report abuse</button>
+                            <button>On hold</button>
+                            <button>Draft</button>
+                            <button>Delete</button>
+                        </div>
+                    </div>`;
+              })
+
+              // card event starts here
+              // 
+
+              const orderTopbar = document.querySelectorAll(".o-topbar");
+              const orderCard = document.querySelectorAll(".order-card");
+
+              orderTopbar.forEach((e) => {
+                e.addEventListener("click", () => {
+
+                  isClick = !isClick;
+
+                  orderTopbar.forEach((ls) => {
+                    ls.parentElement.style.height = "100px";
+                  });
+
+                  if (isClick) {
+                    e.parentElement.style.height = "550px";
+                  }
+                  else {
+                    e.parentElement.style.height = "100px"
+                  }
+                })
+              });
+
+
+              // filter starts from here
+              // 
+              const orderFilterBtn = document.querySelectorAll(".order-tabs-desc button");
+              const orderItem = document.querySelectorAll(".order-card");
+
+
+              orderItem.forEach((ea) => {
+
+                orderFilterBtn.forEach(e => {
+                  e.addEventListener("click", () => {
+
+                    orderFilterBtn.forEach(l => {
+                      l.classList.remove("tab-bg");
+                    })
+
+                    e.classList.add("tab-bg");
+
+                    let ev = e.getAttribute('order-filter').toLowerCase();
+                    if (ev == ea.getAttribute('order-filter')) {
+                      ea.style.display = "block";
+                    }
+                    else {
+                      ea.style.display = "none"
+                    }
+
+                    if (ev == "all") {
+                      ea.style.display = "block"
+                    }
+                  })
+                })
+              })
+
+              // filter end here
+              //
+
+            }
+
+
+
+          </script>
+
+
+          <div id="order"></div>
+
+        </div>
+
+
+
+        <div class="users hidden tabs-item hidden">
+          <div class="order-topbar">
+            <h1>Users</h1>
+            <button class="ut-btn">+ &nbsp;Add user</button>
+          </div>
+
+          <!-- user card goes here -->
+
+          <div class="user-details">
+            <div class="user-card">
+              <img
+                src="https://www.nortonrosefulbright.com/-/media/images/nrf/nrfweb/cvs/uploaded/rahul-mansigani150x150png.png?revision=&revision=4611686018427387904"
+                alt="user" class="u-img">
+              <p class="u-name">Md Rahed</p>
+              <p class="u-email">demo@gmail.com</p>
+              <div class="u-status">
+                <p class="u-s">Status: <span>Moderator</span></p>
+                <div class="u-phone-n">
+                  Phone: 01252-236252
+                </div>
+              </div>
+              <button class="u-btn">active</button>
+              <div class="u-a-status">
+
+              </div>
+            </div>
+          </div>
+
+          <!-- add user card starts here -->
+
+          <div class="add-user">
+            <h1 class="au-heading">New User</h1><ion-icon name="close-outline" class="u-close"></ion-icon>
+            <hr>
+            <form>
+              <div class="name">
+                <label for="">Name</label>
+                <input type="text" required name="name" placeholder="user name">
+              </div>
+              <div class="email">
+                <label for="">Email</label>
+                <input type="text" name="name" placeholder="demo@gmail.com">
+              </div>
+              <div class="phone">
+                <label for="">Number</label>
+                <input type="number" name="number" placeholder="number">
+              </div>
+              <div class="role">
+                <label for="">Role</label>
+                <select name="role" class="role-option">
+                  <option value="Editor">Select role</option>
+                  <option value="Editor">Editor</option>
+                  <option value="Moderator">Moderator</option>
+                  <option value="Admin">Admin</option>
+                  <option value="Visitor">Visitor</option>
+                </select>
+                <i class="fa-solid roi fa-chevron-down"></i>
+              </div>
+
+              <button class="add-user-btn" type="button">Add User</button>
+            </form>
+          </div>
+
+        </div>
+
+        <!-- users end here -->
+
+
+
+        <div class="logout tabs-item hidden">
+          <h1>123</h1>
+        </div>
+        <div class="logout tabs-item hidden">
+          <h1>124</h1>
+        </div>
+        <div class="logout tabs-item hidden">
+          <h1>125</h1>
+        </div>
+        <div class="logs tabs-item hidden">
+          <h1>Logs</h1>
+        </div>
+        <div class="websites tabs-item hidden">
+          <div class="order-topbar">
+            <h1>Websites</h1>
+            <button>+ &nbsp;Add website</button>
+          </div>
+        </div>
+        <div class="settings tabs-item hidden">
+          <h1>Settings</h1>
+        </div>
+        <div class="logout tabs-item hidden">
+          <h1>Logout</h1>
+        </div>
+
+      </div>
+      <!-- main end -->
+
+    </div>
+  </div>
+
+  <div class="notification">
+    <h1>Notification</h1>
+    <i class="fa-solid noti-cancel fa-xmark"></i>
+    <div class="noti-card">
+      <span>2days ago</span>
+      <div>
+        <h3>Congratulations! A new record</h3>
+        <div>
+          <span>Todays Sales Summary</span>
+          <p>here are 1 people on your site right now and this is a new record. Your last record was
+            0</span>
+        </div>
+
+        <div class="noti-delete">
+          <span>delete</span>
+          <span>mark as read</span>
+        </div>
+      </div>
+
+    </div>
+    <div class="noti-card">
+      <span>2days ago</span>
+      <div>
+        <h3>Congratulations! A new record</h3>
+        <div>
+          <span>Todays Sales Summary</span>
+          <p>here are 1 people on your site right now and this is a new record. Your last record was
+            0</span>
+        </div>
+
+        <div class="noti-delete">
+          <span>delete</span>
+          <span>mark as read</span>
+        </div>
+      </div>
+
+    </div>
+    <div class="noti-card">
+      <span>2days ago</span>
+      <div>
+        <h3>Congratulations! A new record</h3>
+        <div>
+          <span>Todays Sales Summary</span>
+          <p>here are 1 people on your site right now and this is a new record. Your last record was
+            0</span>
+        </div>
+
+        <div class="noti-delete">
+          <span>delete</span>
+          <span>mark as read</span>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+  <script src="main.js"></script>
+</body>
+
+</html>
