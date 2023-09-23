@@ -4,7 +4,6 @@ const notification = document.querySelector(".notification");
 const sidebarLi = document.querySelectorAll("#sidebar ul li i");
 const tabs = document.querySelectorAll(".tabs-item");
 const uBtn = document.querySelector(".u-btn");
-const utBtn = document.querySelector(".ut-btn");
 const uClose = document.querySelector(".u-close");
 
 let isClick = false;
@@ -26,6 +25,27 @@ notiCancel.addEventListener("click", () => {
 //         e.innerHTML += `<span class="icon-hover">${dataName}</span>`;
 //     })
 // });
+
+// card user buttton here
+// 
+const utBtn = document.querySelector(".ut-btn");
+
+utBtn.addEventListener("click", () => {
+  isClick = !isClick;
+
+  if (isClick) {
+    uBtn.style.backgroundColor = "gray";
+    uBtn.style.color = "lightgray";
+  }
+  else {
+    uBtn.style.backgroundColor = "cornflowerblue";
+    uBtn.style.color = "white";
+  }
+})
+
+// card user button end here
+
+
 
 
 
@@ -80,24 +100,6 @@ sidebarLi.forEach((e) => {
 // 
 
 
-// card user buttton here
-// 
-
-uBtn.addEventListener("click", () => {
-    isClick = !isClick;
-
-    if (isClick) {
-        uBtn.style.backgroundColor = "gray";
-        uBtn.style.color = "lightgray";
-    }
-
-    else {
-        uBtn.style.backgroundColor = "cornflowerblue";
-        uBtn.style.color = "white";
-    }
-})
-
-// card user button end here
 
 // add user div access here
 

@@ -5,7 +5,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>EasyPanel 2- Manage Multiple WooCommerce</title>
+  <title>Econaz Order Manager - Manage Multiple WooCommerce</title>
   <link rel="stylesheet" href="order.css">
   <link rel="stylesheet" href="user.css">
   <link rel="stylesheet" href="dashboard.css">
@@ -42,7 +42,7 @@
 
     <div id="main-content">
       <div class="search-bar">
-        <span>Welcome demo@gmail.com</span>
+        <span>Welcome Safiul Alom</span>
         <!--<input type="text" placeholder="search product, order, customer..." id="search">-->
         <div id="noti-icon">
           <i class="fa-solid fa-bell" id="show-noti"></i>
@@ -60,13 +60,17 @@
               <div class="wb-card">
                 <div>
                   <li><i class="fa-regular fa-square-check"></i></li>
-                  <li>#122</li></div>
-                <li><img src="https://img.freepik.com/premium-photo/image-colorful-galaxy-sky-generative-ai_791316-9864.jpg?w=2000" alt="wb-logo" class="wb-img"></li>
+                  <li>#122</li>
+                </div>
+                <li><img
+                    src="https://img.freepik.com/premium-photo/image-colorful-galaxy-sky-generative-ai_791316-9864.jpg?w=2000"
+                    alt="wb-logo" class="wb-img"></li>
                 <li class="wb-name">website Name</li>
                 <li class="wb-ls-visit">23/05.2022 tue <br>07:05 PM
                 </li>
                 <li class="wb-c-edit"> <i class="fa-solid fa-pen-to-square"></i></li>
-                <li><a href="https://fontawesome.com/icons/square-check?f=classic&s=regular" class="wb-url-l">https://fontawesome.com/icons/square-check?f=classic&s=regular</a></li>
+                <li><a href="https://fontawesome.com/icons/square-check?f=classic&s=regular"
+                    class="wb-url-l">https://fontawesome.com/icons/square-check?f=classic&s=regular</a></li>
               </div>
             </div>
 
@@ -74,22 +78,36 @@
 
             <div class="add-n-website">
               <h1>connect website</h1>
-              <form action="">
+              <form onsubmit="return updatePlatform()">
                 <div class="awn-link">
                   <label for="link">website url</label>
-                  <input type="text" placeholder="website url.....">
+                  <input type="url" id="website" placeholder="Enter Your Website URL"><br>
                 </div>
-                <div class="awn-title">
-                  <label for="link">website title</label>
-                  <input type="text" placeholder="website title.....">
-                </div>
+                <button class="awn-btn" type="submit">Connect</button>
+                <span id="msg"></span>
               </form>
-              <button class="awn-btn" type="submit">connect</button>
               <i class="fa-solid awn-c-btn fa-xmark"></i>
             </div>
 
+
+            <!--Connect JS-->
+            <script>
+              function updatePlatform() {
+                let url = document.getElementById("website").value;
+                let msg = document.getElementById("msg");
+                let user = '1';
+                let domain = (new URL(url));
+                let uri = 'https://' + domain.hostname + '/wc-auth/v1/authorize?app_name=Econaz%20Order%20Manager&scope=read_write&user_id=' + user + '&return_url=' + window.location.hostname + '/dashboard.php&callback_url=' + window.location.hostname + '/ajax.php';
+                window.open(uri, "_blank");
+                msg.innerHTML = "নতুন যে ট্যাব চালু হয়েছে সেখানে আপনার ওয়েবসাইটে লগিন করে Approve করুন। ";
+                return false;
+              }
+            </script>
+            <!--Connect JS end-->
+
+
             <!-- addwebsite js code here -->
-            
+
             <script>
               let awnBtn = document.querySelector(".awn-c-btn");
               let addWebsiteCard = document.querySelector(".add-n-website");
@@ -98,7 +116,7 @@
               addNewbtn.onclick = () => {
                 addWebsiteCard.style.transform = "scale(1)";
               }
-              awnBtn.onclick = () =>{
+              awnBtn.onclick = () => {
                 addWebsiteCard.style.transform = "scale(0)";
               }
             </script>
@@ -124,8 +142,22 @@
               <button order-filter="cancel">Cancel <span>(1)</span></button>
               <button order-filter="trash">Trash <span>(1)</span></button>
             </div>
-            <input type="text" placeholder="search order..." class="search-order">
           </div>
+
+          <!-- search bar starts here -->
+
+          <div class="order-search-box">
+            <input type="text" placeholder="search by number..." class="search-order">
+          </div>
+
+
+          <script>
+
+
+          </script>
+
+
+          <!-- search bar end here -->
 
 
           <div class="order-time">
@@ -147,7 +179,7 @@
               console.log(data);
               document.getElementById("all_order").innerHTML = data.length;
               data.forEach(function (obj) {
-                document.getElementById("order").innerHTML += `<div class="order-card" order-filter="${obj.status}">
+                document.getElementById("order").innerHTML += `<div class="order-card" id="${obj.id}" order-filter="${obj.status}">
                         <div class="o-topbar">
                             <div class="otb-left">
                                 <p class="otb-1">${obj.id}</p>
@@ -280,7 +312,37 @@
               // filter end here
               //
 
+              // search bar filtering with id 
+              // 
+
+              document.querySelector(".search-order").addEventListener("input", filterOrderSearch);
+
+              let phoneNumber = document.querySelectorAll(".order-card");
+              
+
+              function filterOrderSearch() {
+                phoneNumber.forEach(item => {
+                  let input = document.querySelector(".search-order");
+                  let searchId = item.getAttribute("id");
+
+                  let textValue = searchId || input.value;
+
+                  console.log(textValue);
+
+
+                  console.log(searchId);
+                  if (textValue.indexOf(input.value) > -1) {
+                    item.style.display = "";
+                  }
+                  else {
+                    item.style.display = "none";
+                    console.log("no found");
+                  }
+
+                })
+
             }
+          }
 
 
 
@@ -339,7 +401,7 @@
 
 
 
-            <!-- edit order ends here -->
+          <!-- edit order ends here -->
           <div id="order"></div>
 
         </div>
@@ -351,63 +413,116 @@
             <h1>Users</h1>
             <button class="ut-btn">+ &nbsp;Add user</button>
           </div>
-
           <!-- user card goes here -->
-
           <div class="user-details">
-            <div class="user-card">
-              <img
-                src="https://www.nortonrosefulbright.com/-/media/images/nrf/nrfweb/cvs/uploaded/rahul-mansigani150x150png.png?revision=&revision=4611686018427387904"
-                alt="user" class="u-img">
-              <p class="u-name">Md Rahed</p>
-              <p class="u-email">demo@gmail.com</p>
-              <div class="u-status">
-                <p class="u-s">Status: <span>Moderator</span></p>
-                <div class="u-phone-n">
-                  Phone: 01252-236252
-                </div>
-              </div>
-              <button class="u-btn">active</button>
-              <div class="u-a-status">
-
-              </div>
-            </div>
           </div>
-
           <!-- add user card starts here -->
+
 
           <div class="add-user">
             <h1 class="au-heading">New User</h1><ion-icon name="close-outline" class="u-close"></ion-icon>
             <hr>
-            <form>
+            <form id="add-user" onsubmit="return addUser();">
               <div class="name">
                 <label for="">Name</label>
-                <input type="text" required name="name" placeholder="user name">
+                <input type="text" required id="userName" placeholder="Enter User Name">
               </div>
               <div class="email">
                 <label for="">Email</label>
-                <input type="text" name="name" placeholder="demo@gmail.com">
+                <input type="text" id="userEmail" placeholder="demo@gmail.com">
               </div>
               <div class="phone">
-                <label for="">Number</label>
-                <input type="number" name="number" placeholder="number">
+                <label for="">Contact</label>
+                <input type="text" id="phoneNum" placeholder="Enter Contact Number">
               </div>
-              <div class="role">
-                <label for="">Role</label>
-                <select name="role" class="role-option">
-                  <option value="Editor">Select role</option>
-                  <option value="Editor">Editor</option>
-                  <option value="Moderator">Moderator</option>
-                  <option value="Admin">Admin</option>
-                  <option value="Visitor">Visitor</option>
-                </select>
-                <i class="fa-solid roi fa-chevron-down"></i>
+              <div class="password">
+                <label for="">Password</label>
+                <input type="text" id="userPass" placeholder="Set Password">
               </div>
-
-              <button class="add-user-btn" type="button">Add User</button>
+              <!--<div class="role">-->
+              <!--  <label for="">Role</label>-->
+              <!--  <select name="role" class="role-option">-->
+              <!--    <option value="Editor">Select role</option>-->
+              <!--    <option value="Editor">Editor</option>-->
+              <!--    <option value="Moderator">Moderator</option>-->
+              <!--    <option value="Admin">Admin</option>-->
+              <!--    <option value="Visitor">Visitor</option>-->
+              <!--  </select>-->
+              <!--  <i class="fa-solid roi fa-chevron-down"></i>-->
+              <!--</div>-->
+              <span id="msg01"></span>
+              <button class="add-user-btn" type="submit">Add User</button>
             </form>
           </div>
+          <script>
+            function removeUser(id) {
+              fetch("ajax.php", {
+                method: "post",
+                headers: {
+                  'Accept': 'application/json',
+                  'Content-Type': 'application/json'
+                },
 
+                //make sure to serialize your JSON body
+                body: JSON.stringify({
+                  removeUser: id
+                })
+              })
+                .then((response) => response.json())
+                .then(data => {
+                  if (data.message == 'Success') {
+                    document.getElementById("user_" + id).remove();
+                  }
+                });
+            }
+
+            function addUser() {
+              let userName = document.getElementById("userName").value;
+              let userEmail = document.getElementById("userEmail").value;
+              let phoneNum = document.getElementById("phoneNum").value;
+              let userPass = document.getElementById("userPass").value;
+              fetch("ajax.php", {
+                method: "post",
+                headers: {
+                  'Accept': 'application/json',
+                  'Content-Type': 'application/json'
+                },
+
+                //make sure to serialize your JSON body
+                body: JSON.stringify({
+                  userName: userName,
+                  userEmail: userEmail,
+                  phoneNum: phoneNum,
+                  userPass: userPass
+                })
+              })
+                .then((response) => response.json())
+                .then(data => {
+                  if (data.message == 'Success') {
+                    document.getElementById("msg01").innerHTML = 'User Added';
+                    document.getElementsByClassName("user-details")[0].innerHTML += `<div class="user-card">
+              <img
+                src="https://www.nortonrosefulbright.com/-/media/images/nrf/nrfweb/cvs/uploaded/rahul-mansigani150x150png.png?revision=&revision=4611686018427387904"
+                alt="user" class="u-img">
+              <p class="u-name">${userName}</p>
+              <p class="u-email">${userEmail}</p>
+              <div class="u-status">
+                <p class="u-s">Status: <span>Moderator</span></p>
+                <div class="u-phone-n">
+                  Contact: <a href="tel:${phoneNum}">${phoneNum}</a>
+                </div>
+              </div>
+              <button class="u-btn">Remove</button>
+            </div>`;
+                  } else {
+                    document.getElementById("msg01").innerHTML = 'Failed';
+                  }
+                  document.getElementById("add-user").reset();
+                });
+              return false;
+
+            }
+          </script>
         </div>
 
         <!-- users end here -->
@@ -437,6 +552,7 @@
         </div>
         <div class="logout tabs-item hidden">
           <h1>Logout</h1>
+          <a class="awn-btn" href="logout.php">Logout</a>
         </div>
 
       </div>

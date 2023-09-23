@@ -55,7 +55,10 @@
 
 .search-order {
     padding: 10px;
-    width: 350px;
+    width: 100%;
+    min-height: 60px;
+    margin-top: 1rem;
+    border: 1px solid rgba(128, 128, 128, 0.233);
     border: none;
     box-shadow: rgba(0, 0, 0, 0.10) 0px 5px 15px;
     font-size: 1.2rem;
