@@ -312,3 +312,63 @@
   * Custom CSS Comment:
   * order status end hehe
   */
+
+  /*
+   * Custom CSS Comment:
+   * edit order here
+   */
+
+   .edit-order {
+    width: 400px;
+    height: 450px;
+    background: white;
+    box-shadow: 2px 3px 5px rgba(128, 128, 128, 0.233);
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 1rem;
+    border-radius: 10px;
+   }
+
+   .edit-order  div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+   }
+
+   .edit-order div input,textarea {
+    width: 260px;
+    padding: 5px 10px;
+    resize: none;
+   }
+
+   .edit-order form label {
+    font-size: 0.8rem;
+    color: #222;
+   }
+
+   .eo-heading {
+    text-align: center;
+    font-size: 2rem;
+    color: black;
+    width: 100%;
+   }
+
+   .ed-cc-status {
+    width: 260px;
+    padding: 5px 10px;
+   }
+
+   .ed-change-btn {
+    width: 120px;
+    display: block;
+    margin: 2rem auto;
+    padding: 10px 10px;
+    border: none;
+    outline: none;
+    color: white;
+    background: #1abc9c;
+    cursor: pointer;
+   }
