@@ -111,6 +111,7 @@
   top: 0;
   background: white;
   border-radius: 5px;
+  transform-origin: top right;
   transform: scale(0);
   transition: all 0.5s;
 }
