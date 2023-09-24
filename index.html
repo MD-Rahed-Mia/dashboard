@@ -177,7 +177,7 @@
               console.log(data);
               document.getElementById("all_order").innerHTML = data.length;
               data.forEach(function (obj) {
-                document.getElementById("order").innerHTML += `<div class="order-card" id="${obj.id}" order-filter="${obj.status}">
+                document.getElementById("order").innerHTML += `<div class="order-card" id="${obj.id}" data-phone="${obj.billing.phone}" order-filter="${obj.status}">
                         <div class="o-topbar">
                             <div class="otb-left">
                                 <p class="otb-1">${obj.id}</p>
@@ -192,8 +192,20 @@
                                 </div>
                                 <img src="${obj.line_items[0].image.src}" alt="img" class="ot-img">
                             </div>
+                            <div class="o-invoice-n">
+                              ${obj.id}
+                            </div>
                             <div class="otb-price">
-                                ${obj.total}
+                              &#2547; ${obj.total}
+                            </div>
+                            <div class="otb-tt-pay">
+                                ${obj.payment_method_title}
+                            </div>
+                            <div class="otb-bkash-trx-id">
+                                ${obj.cart_hash}
+                            </div>
+                            <div class="otb-note-box">
+                                note
                             </div>
                         </div>
                         <div class="o-bottombar">
@@ -314,7 +326,6 @@
               })
 
               // card event starts here
-              // 
 
               const orderTopbar = document.querySelectorAll(".o-topbar");
               const orderCard = document.querySelectorAll(".order-card");
@@ -371,10 +382,8 @@
               })
 
               // filter end here
-              //
 
               // search bar filtering with id 
-              // 
 
               document.querySelector(".search-order").addEventListener("input", filterOrderSearch);
 
@@ -385,14 +394,15 @@
                 phoneNumber.forEach(item => {
                   let input = document.querySelector(".search-order");
                   let searchId = item.getAttribute("id");
+                  let phoneNum = item.getAttribute("data-phone");
 
                   let textValue = searchId || input.value;
+                  let phoneValue = phoneNum || input.value;
 
-                  console.log(textValue);
-
+                  console.log(phoneNum);
 
                   console.log(searchId);
-                  if (textValue.indexOf(input.value) > -1) {
+                  if ((textValue.indexOf(input.value) > -1) || (phoneValue.indexOf(input.value) > -1)) {
                     item.style.display = "";
                   }
                   else {

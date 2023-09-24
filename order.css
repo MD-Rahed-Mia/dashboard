@@ -94,27 +94,30 @@
 }
 
 .ot-img {
-    margin-left: 130px;
-    height: 90px;
-    width: 70px;
+    margin-left: 3rem;
+    height: 70px;
+    width: 60px;
     padding: 0.5rem;
-    border: 1px solid gray;
+    border: 1px solid #0067B0;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 4px;
+}
+
+.o-invoice-n {
+    width: 100px;
 }
 
 .otb-1 {
-    margin-left: 3rem;
-    font-size: 1.2rem;
-    color: gray;
+    margin-left: 1rem;
+    font-size: 0.8rem;
     font-weight: 400;
     width: 50px;
 }
 
 .otb-process {
-    margin-left: 5rem;
+    margin-left: 2rem;
+    width: 50px;
     display: flex;
     text-align: center;
     flex-direction: column;
@@ -123,14 +126,14 @@
 }
 
 .cc-name {
-    width: 150px;
-    margin-left: 3rem;
+    width: 200px;
+    margin-left: 1rem;
 }
 
 .otb2 {
     width: 20px;
     height: 20px;
-    background: skyblue;
+    background: #0067B0;
     border-radius: 50%;
 }
 
@@ -138,21 +141,38 @@
     font-size: 0.6rem;
     margin-top: 5px;
     text-transform: uppercase;
-    color: skyblue;
+    color: #0067B0;
     width: 70px;
 }
 
 .otb-time {
-    margin-left: 150px;
+    margin-left: 3rem;
     font-size: 0.8rem;
     text-align: center;
 }
 
 .otb-price {
     font-size: 1.4rem;
-    color: gray;
-    margin-right: 50px;
+    color: #0067B0;
+    width: 110px;
     
+}
+
+.otb-tt-pay {
+    width: 170px;
+    text-align: left;
+    font-size: 0.8rem;
+}
+
+.otb-bkash-trx-id {
+    font-size: 0.8rem;
+    width: 180px;
+}
+
+.otb-note-box {
+    width: 200px;
+    text-align: center;
+    font-size: 0.8rem;
 }
 
 .o-bottombar {
@@ -309,12 +329,10 @@
 
 
  /*
-  * Custom CSS Comment:
   * order status end hehe
   */
 
   /*
-   * Custom CSS Comment:
    * edit order here
    */
 
