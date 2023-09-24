@@ -174,6 +174,7 @@
               .then((response) => response.json())
               .then(data => orderList(data));
             function orderList(data) {
+              console.log(data);
               document.getElementById("all_order").innerHTML = data.length;
               data.forEach(function (obj) {
                 document.getElementById("order").innerHTML += `<div class="order-card" id="${obj.id}" order-filter="${obj.status}">
@@ -235,44 +236,26 @@
                             <div class="print-icon">
                               <img src="images/print_icon.png" alt="print">
                             </div>
-                        </div>
-                        <div class="order-status">
-                            <button>Process</button>
-                            <button>confirm</button>
-                            <button>In transit</button>
-                            <button>Delivered</button>
-                            <button>Return</button>
-                            <button>Cancel</button>
-                            <button>Trash</button>
-                            <button>Pending payment</button>
-                            <button>Report abuse</button>
-                            <button>On hold</button>
-                            <button>Draft</button>
-                            <button>Delete</button>
-                        </div>
 
 
-                    </div>
-
-
-                    <div class="edit-order">
+                            <div class="edit-order">
             <div class="eo-heading">Edit order</div>
             <form action="">
               <div>
                 <label for="ed-cc-name">Customer name</label>
-                <input type="text" placeholder="John doe">
+                <input type="text" value="${obj.billing.first_name}" onfocus="this.setSelectionRange(0, 99999)">
               </div>
               <div>
                 <label for="ed-cc-email">Email</label>
-                <input type="text" placeholder="demo@gmail.com">
+                <input type="email" value="${obj.billing.email}" onfocus="this.setSelectionRange(0, 99999)">
               </div>
               <div>
                 <label for="ed-cc-phone">Phone number</label>
-                <input type="text" placeholder="01575252142">
+                <input type="text" value="${obj.billing.phone}" onfocus="this.setSelectionRange(0, 99999)">
               </div>
               <div>
                 <label for="ed-cc-address">Address</label>
-                <textarea name="address" id="" cols="30" rows="5" placeholder="address..."></textarea>
+                <textarea name="address" id="" cols="30" rows="5" value="" onfocus="this.setSelectionRange(0, 99999)">${obj.billing.address_1}</textarea>
               </div>
               <div>
                 <label for="ed-cc-status">Change status</label>
@@ -308,8 +291,24 @@
 
 
 
+                        </div>
+                        <div class="order-status">
+                            <button>Process</button>
+                            <button>confirm</button>
+                            <button>In transit</button>
+                            <button>Delivered</button>
+                            <button>Return</button>
+                            <button>Cancel</button>
+                            <button>Trash</button>
+                            <button>Pending payment</button>
+                            <button>Report abuse</button>
+                            <button>On hold</button>
+                            <button>Draft</button>
+                            <button>Delete</button>
+                        </div>
 
 
+                    </div>
 
                     `;
               })
@@ -404,21 +403,24 @@
                 })
 
               }
-              let edPage = document.getElementsByClassName("edit-order")[0];
-
-              let editBtn = document.querySelectorAll(".ed-img-icon");
-              editBtn.forEach(el => {
-                el.addEventListener("click", () => {
-                  edPage.style.transform = "scale(1)";
-                  document.querySelector(".order-card").style.height = "600px";
-                })
+              orderCard.forEach((el, i) => {
+                let edPage = orderCard[i].querySelector(".edit-order");
+              let editBtn = orderCard[i].querySelector(".ed-img-icon");
+              editBtn.addEventListener("click", () => {
+                edPage.style.transform = "scale(1)";
               })
 
-              const cancelEditBtn = document.querySelector(".cancel-edit-page");
-              cancelEditBtn.addEventListener("click", () => {
-                cancelEditBtn.parentElement.style.transform = "scale(0)";
+              let canbtnEdit = orderCard[i].querySelector(".cancel-edit-page");
+              canbtnEdit.addEventListener("click", () => {
+                canbtnEdit.parentElement.style.transform = "scale(0)";
               })
+              })
+
+
+
+
             }
+
 
           </script>
 
@@ -429,6 +431,30 @@
 
           <!-- edit order ends here -->
           <div id="order"></div>
+
+          <div class="order-pagination">
+              <ul>
+                <li>Previous</li>
+                <li>1</li>
+                <li>2</li>
+                <li>3</li>
+                <li>4</li>
+                <li>5</li>
+                <li>6</li>
+                <li>7</li>
+                <li>8</li>
+                <li>9</li>
+                <li>11</li>
+                <li>12</li>
+                <li>13</li>
+                <li>14</li>
+                <li>20</li>
+                <li>30</li>
+                <li>40</li>
+                <li>100</li>
+                <li>Next</li>
+              </ul>
+          </div>
 
         </div>
 

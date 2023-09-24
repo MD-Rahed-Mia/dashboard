@@ -320,9 +320,9 @@
 
    .edit-order {
     position: absolute;
-    top: 50%;
-    right: 3rem;
-    transform: translateY(-50%) scale(0);
+    top: 0;
+    right: 1rem;
+    transform: scale(0);
     width: 400px;
     height: 450px;
     background: white;
@@ -410,3 +410,45 @@
         font-size: 2.5rem;
         cursor: pointer;
      }
+
+
+/*
+ * pagination start here
+ */
+.order-pagination {
+    text-align: center;
+    width: 1200px;
+    height: 70px;
+    padding: 1rem 2rem;
+    position: relative;
+    bottom:0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+
+.order-pagination ul {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+
+}
+
+.order-pagination ul li {
+    width: 100px;
+    padding: 1rem;
+    list-style-type: none;
+    text-align: center;
+    cursor: pointer;
+    box-shadow: 1px 2px 2px rgba(128, 128, 128, 0.233);
+    transition: all 500ms;
+    font-size: 1.2rem;
+}
+.order-pagination ul li:hover {
+    transform: translateY(-15px);
+    background: #1E003D;
+    color: white;
+}
+
+
