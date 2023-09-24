@@ -1,11 +1,10 @@
 <!DOCTYPE html>
-
 <html lang="en">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Econaz Order Manager - Manage Multiple WooCommerce</title>
+  <title>Dashboard - Econaz Order Manager</title>
   <link rel="stylesheet" href="order.css">
   <link rel="stylesheet" href="user.css">
   <link rel="stylesheet" href="dashboard.css">
@@ -14,18 +13,17 @@
 </head>
 
 <body>
-
   <div class="wrapper">
     <div id="sidebar">
       <ul>
-        <li data-name="Dashboard active">
-          <i class="fa-solid fa-database"></i>
+        <li data-name="Dashboard">
+          <i class="fa-solid fa-database open"></i>
         </li>
-        <li data-name="Cart">
-          <i class="fa-solid fa-cart-shopping"></i>
+        <li data-name="Orders">
+          <i class="fa-solid fa-cart-shopping "></i>
         </li>
         <li data-name="User">
-          <i class="fa-solid fa-user"></i>
+          <i class="fa-solid fa-user "></i>
         </li>
         <li data-name="Chart">
           <i class="fa-solid fa-chart-pie"></i>
@@ -38,11 +36,11 @@
         <li data-name="Settings"><i class="fa-solid fa-gear"></i></li>
         <li data-name="Logout"><i class="fa-solid fa-power-off"></i></li>
       </ul>
-    </div>
 
+    </div>
     <div id="main-content">
       <div class="search-bar">
-        <span>Welcome Safiul Alom</span>
+        <marquee>This system under development. If you have any question kindly ask here: sajonybd@gmail.com</marquee>
         <!--<input type="text" placeholder="search product, order, customer..." id="search">-->
         <div id="noti-icon">
           <i class="fa-solid fa-bell" id="show-noti"></i>
@@ -53,8 +51,8 @@
           <h1>Dashboard</h1>
           <div class="dashboard-website-list">
             <div class="wb-heading">
-              <p>All Website</p>
-              <button class="awn-btn-1">add website</button>
+              <span>Welcome Safiul Alom,</span>
+              <button class="awn-btn-1">+ &nbsp;Add Website</button>
             </div>
             <div class="wb-list">
               <div class="wb-card">
@@ -81,7 +79,8 @@
               <form onsubmit="return updatePlatform()">
                 <div class="awn-link">
                   <label for="link">website url</label>
-                  <input type="url" id="website" placeholder="Enter Your Website URL"><br>
+                  <input type="text" id="website_name" placeholder="Enter Website Name"><br>
+                  <input type="url" id="website" placeholder="Enter Website URL"><br>
                 </div>
                 <button class="awn-btn" type="submit">Connect</button>
                 <span id="msg"></span>
@@ -95,7 +94,7 @@
               function updatePlatform() {
                 let url = document.getElementById("website").value;
                 let msg = document.getElementById("msg");
-                let user = '1';
+                let user = document.getElementById("website_name").value;
                 let domain = (new URL(url));
                 let uri = 'https://' + domain.hostname + '/wc-auth/v1/authorize?app_name=Econaz%20Order%20Manager&scope=read_write&user_id=' + user + '&return_url=' + window.location.hostname + '/dashboard.php&callback_url=' + window.location.hostname + '/ajax.php';
                 window.open(uri, "_blank");
@@ -147,7 +146,7 @@
           <!-- search bar starts here -->
 
           <div class="order-search-box">
-            <input type="text" placeholder="search by number..." class="search-order">
+            <input type="text" placeholder="search order id..." class="search-order">
           </div>
 
 
@@ -175,8 +174,6 @@
               .then((response) => response.json())
               .then(data => orderList(data));
             function orderList(data) {
-
-              console.log(data);
               document.getElementById("all_order").innerHTML = data.length;
               data.forEach(function (obj) {
                 document.getElementById("order").innerHTML += `<div class="order-card" id="${obj.id}" order-filter="${obj.status}">
@@ -208,32 +205,36 @@
                             </div>
                             <div class="obb-center">
                                 <div class="obb-billing-address"> 
-                                  <i class="fa-solid fa-pen-to-square" id="edit-ob-address"></i>
                                     <p class="obb-h">Billing Address</p>
                                     <p class="obb-bl-n">${obj.billing.address_1}
                                 </div>
                                 <div class="obb-email">
-                                  <i class="fa-solid fa-pen-to-square" id="edit-ob-address"></i>
                                     <p class="obb-h">Email</p>
                                     <a class="obb-email-id">${obj.billing.email}</a>
                                 </div>
                                 <div class="obb-telephone">
-                                  <i class="fa-solid fa-pen-to-square" id="edit-ob-address"></i>
                                     <p class="obb-h">Telephone</p>
                                     <a class="obb-tl-id">+88 01542369525</a>
                                 </div>
                                 <div class="obb-shipping-address">
-                                  <i class="fa-solid fa-pen-to-square" id="edit-ob-address"></i>
                                     <p class="obb-h">Shipping Adress</p>
                                     <p class="obb-s-id">122 Dhaka, Motizil <br>Near Idris Market, Kolatoli, <br>Dhaka
                                     </p>
+
                                 </div>
+                            <div>
+
 
                             </div>
-                            <div>
                                 <!-- no data here you can add some more -->
                             </div>
                             
+                            <div class="edit-details-icon">
+                                    <img src="images/pencil.png" alt="edit details" class="ed-img-icon">
+                                  </div>
+                            <div class="print-icon">
+                              <img src="images/print_icon.png" alt="print">
+                            </div>
                         </div>
                         <div class="order-status">
                             <button>Process</button>
@@ -249,7 +250,68 @@
                             <button>Draft</button>
                             <button>Delete</button>
                         </div>
-                    </div>`;
+
+
+                    </div>
+
+
+                    <div class="edit-order">
+            <div class="eo-heading">Edit order</div>
+            <form action="">
+              <div>
+                <label for="ed-cc-name">Customer name</label>
+                <input type="text" placeholder="John doe">
+              </div>
+              <div>
+                <label for="ed-cc-email">Email</label>
+                <input type="text" placeholder="demo@gmail.com">
+              </div>
+              <div>
+                <label for="ed-cc-phone">Phone number</label>
+                <input type="text" placeholder="01575252142">
+              </div>
+              <div>
+                <label for="ed-cc-address">Address</label>
+                <textarea name="address" id="" cols="30" rows="5" placeholder="address..."></textarea>
+              </div>
+              <div>
+                <label for="ed-cc-status">Change status</label>
+                <select name="" id="" class="ed-cc-status">
+                  <option value="">Select current status</option>
+                  <option value="">Process</option>
+                  <option value="">Confirm</option>
+                  <option value="">Processing</option>
+                  <option value="">In trasit</option>
+                  <option value="">Deliverd</option>
+                  <option value="">Return</option>
+                  <option value="">Cancel</option>
+                  <option value="">Trash</option>
+                  <option value="">On hold</option>
+                  <option value="">Draft</option>
+                </select>
+              </div>
+              <div>
+                <label for="ed-cc-payment">Payment type</label>
+                <select name="" id="" class="ed-cc-status">
+                  <option value="">Select payment type</option>
+                  <option value="">Mobile banking</option>
+                  <option value="">Bank</option>
+                  <option value="">Credit card</option>
+                  <option value="">Cash on delivery</option>
+                </select>
+              </div>
+              <button type="button" class="ed-change-btn">change order</button>
+            </form>
+
+            <i class="fa-solid cancel-edit-page fa-xmark"></i>
+          </div>
+
+
+
+
+
+
+                    `;
               })
 
               // card event starts here
@@ -318,7 +380,7 @@
               document.querySelector(".search-order").addEventListener("input", filterOrderSearch);
 
               let phoneNumber = document.querySelectorAll(".order-card");
-              
+
 
               function filterOrderSearch() {
                 phoneNumber.forEach(item => {
@@ -341,63 +403,27 @@
 
                 })
 
+              }
+              let edPage = document.getElementsByClassName("edit-order")[0];
+
+              let editBtn = document.querySelectorAll(".ed-img-icon");
+              editBtn.forEach(el => {
+                el.addEventListener("click", () => {
+                  edPage.style.transform = "scale(1)";
+                  document.querySelector(".order-card").style.height = "600px";
+                })
+              })
+
+              const cancelEditBtn = document.querySelector(".cancel-edit-page");
+              cancelEditBtn.addEventListener("click", () => {
+                cancelEditBtn.parentElement.style.transform = "scale(0)";
+              })
             }
-          }
-
-
 
           </script>
 
-          <!-- edit order starts here
 
-          <div class="edit-order">
-            <div class="eo-heading">Edit order</div>
-            <form action="">
-              <div>
-                <label for="ed-cc-name">Customer name</label>
-                <input type="text" placeholder="John doe">
-              </div>
-              <div>
-                <label for="ed-cc-email">Email</label>
-                <input type="text" placeholder="demo@gmail.com">
-              </div>
-              <div>
-                <label for="ed-cc-phone">Phone number</label>
-                <input type="text" placeholder="01575252142">
-              </div>
-              <div>
-                <label for="ed-cc-address">Address</label>
-                <textarea name="address" id="" cols="30" rows="5" placeholder="address..."></textarea>
-              </div>
-              <div>
-                <label for="ed-cc-status">Change status</label>
-                <select name="" id="" class="ed-cc-status">
-                  <option value="">Select current status</option>
-                  <option value="">Process</option>
-                  <option value="">Confirm</option>
-                  <option value="">Processing</option>
-                  <option value="">In trasit</option>
-                  <option value="">Deliverd</option>
-                  <option value="">Return</option>
-                  <option value="">Cancel</option>
-                  <option value="">Trash</option>
-                  <option value="">On hold</option>
-                  <option value="">Draft</option>
-                </select>
-              </div>
-              <div>
-                <label for="ed-cc-payment">Payment type</label>
-                <select name="" id="" class="ed-cc-status">
-                  <option value="">Select payment type</option>
-                  <option value="">Mobile banking</option>
-                  <option value="">Bank</option>
-                  <option value="">Credit card</option>
-                  <option value="">Cash on delivery</option>
-                </select>
-              </div>
-              <button type="button" class="ed-change-btn">change order</button>
-            </form>
-          </div> -->
+
 
 
 
@@ -414,7 +440,67 @@
             <button class="ut-btn">+ &nbsp;Add user</button>
           </div>
           <!-- user card goes here -->
-          <div class="user-details">
+          <div class="user-details" id="activeUsers">
+            <div class="user-card" id="user_16">
+              <img
+                src="https://www.nortonrosefulbright.com/-/media/images/nrf/nrfweb/cvs/uploaded/rahul-mansigani150x150png.png?revision=&revision=4611686018427387904"
+                alt="user" class="u-img">
+              <p class="u-name">Rahed</p>
+              <p class="u-email">rahed@gmail.com</p>
+              <div class="u-status">
+                <p class="u-s">Status: <span id="status_16">Moderator</span></p>
+                <div class="u-phone-n">
+                  Contact: <a href="tel:12345678">12345678</a>
+                </div>
+              </div>
+              <button class="u-btn-disable" onclick="blockUser(16);">Block</button>
+            </div>
+            <div class="user-card" id="user_18">
+              <img
+                src="https://www.nortonrosefulbright.com/-/media/images/nrf/nrfweb/cvs/uploaded/rahul-mansigani150x150png.png?revision=&revision=4611686018427387904"
+                alt="user" class="u-img">
+              <p class="u-name">test</p>
+              <p class="u-email">test@gmail.com</p>
+              <div class="u-status">
+                <p class="u-s">Status: <span id="status_18">Moderator</span></p>
+                <div class="u-phone-n">
+                  Contact: <a href="tel:4343">4343</a>
+                </div>
+              </div>
+              <button class="u-btn-disable" onclick="blockUser(18);">Block</button>
+            </div>
+          </div>
+          <!-- add user card starts here -->
+          <div class="user-details" id="blockUsers">
+
+            <div class="user-card" id="user_15">
+              <img
+                src="https://www.nortonrosefulbright.com/-/media/images/nrf/nrfweb/cvs/uploaded/rahul-mansigani150x150png.png?revision=&revision=4611686018427387904"
+                alt="user" class="u-img">
+              <p class="u-name">Jony</p>
+              <p class="u-email">sajonybd@gmail.com</p>
+              <div class="u-status">
+                <p class="u-s">Status: <span id="status_15">Blocked</span></p>
+                <div class="u-phone-n">
+                  Contact: <a href="tel:01967550181">01967550181</a>
+                </div>
+              </div>
+              <button class="u-btn" onclick="activeUser(15);">Active</button>
+            </div>
+            <div class="user-card" id="user_17">
+              <img
+                src="https://www.nortonrosefulbright.com/-/media/images/nrf/nrfweb/cvs/uploaded/rahul-mansigani150x150png.png?revision=&revision=4611686018427387904"
+                alt="user" class="u-img">
+              <p class="u-name">Demo</p>
+              <p class="u-email">demotest@gmail.com</p>
+              <div class="u-status">
+                <p class="u-s">Status: <span id="status_17">Blocked</span></p>
+                <div class="u-phone-n">
+                  Contact: <a href="tel:123456">123456</a>
+                </div>
+              </div>
+              <button class="u-btn" onclick="activeUser(17);">Active</button>
+            </div>
           </div>
           <!-- add user card starts here -->
 
@@ -455,6 +541,58 @@
             </form>
           </div>
           <script>
+            let newUser;
+            function activeUser(id) {
+              fetch("ajax.php", {
+                method: "post",
+                headers: {
+                  'Accept': 'application/json',
+                  'Content-Type': 'application/json'
+                },
+
+                //make sure to serialize your JSON body
+                body: JSON.stringify({
+                  activeUser: id
+                })
+              })
+                .then((response) => response.json())
+                .then(data => {
+                  if (data.message == 'Success') {
+                    newUser = document.getElementById("user_" + id);
+                    newUser.removeChild(newUser.lastElementChild);
+                    document.getElementById("user_" + id).remove();
+                    document.getElementById("activeUsers").innerHTML += `<div class="user-card" id="user_${id}">${newUser.innerHTML}<button class="u-btn-disable" onclick="blockUser(${id});">Block</button></div>`;
+                    document.getElementById("status_" + id).innerText = 'Moderator';
+
+                  }
+                });
+            }
+
+            function blockUser(id) {
+              fetch("ajax.php", {
+                method: "post",
+                headers: {
+                  'Accept': 'application/json',
+                  'Content-Type': 'application/json'
+                },
+
+                //make sure to serialize your JSON body
+                body: JSON.stringify({
+                  blockUser: id
+                })
+              })
+                .then((response) => response.json())
+                .then(data => {
+                  if (data.message == 'Success') {
+                    newUser = document.getElementById("user_" + id);
+                    newUser.removeChild(newUser.lastElementChild);
+                    document.getElementById("user_" + id).remove();
+                    document.getElementById("blockUsers").innerHTML += `<div class="user-card" id="user_${id}">${newUser.innerHTML}<button class="u-btn" onclick="activeUser(${id});">Active</button></div>`;
+                    document.getElementById("status_" + id).innerText = 'Blocked';
+                  }
+                });
+            }
+
             function removeUser(id) {
               fetch("ajax.php", {
                 method: "post",
@@ -500,19 +638,19 @@
                 .then(data => {
                   if (data.message == 'Success') {
                     document.getElementById("msg01").innerHTML = 'User Added';
-                    document.getElementsByClassName("user-details")[0].innerHTML += `<div class="user-card">
+                    document.getElementsByClassName("user-details")[0].innerHTML += `<div class="user-card" id="user_17">
               <img
                 src="https://www.nortonrosefulbright.com/-/media/images/nrf/nrfweb/cvs/uploaded/rahul-mansigani150x150png.png?revision=&revision=4611686018427387904"
                 alt="user" class="u-img">
               <p class="u-name">${userName}</p>
               <p class="u-email">${userEmail}</p>
               <div class="u-status">
-                <p class="u-s">Status: <span>Moderator</span></p>
+              <p class="u-s">Status: <span id="status_17">Moderator</span></p>
                 <div class="u-phone-n">
                   Contact: <a href="tel:${phoneNum}">${phoneNum}</a>
                 </div>
               </div>
-              <button class="u-btn">Remove</button>
+              <button class="u-btn-disable" onclick="blockUser(17);">Block</button>
             </div>`;
                   } else {
                     document.getElementById("msg01").innerHTML = 'Failed';
@@ -544,7 +682,6 @@
         <div class="websites tabs-item hidden">
           <div class="order-topbar">
             <h1>Websites</h1>
-            <button>+ &nbsp;Add website</button>
           </div>
         </div>
         <div class="settings tabs-item hidden">
