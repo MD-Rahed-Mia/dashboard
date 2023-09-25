@@ -56,15 +56,42 @@
           </div>
           <div class="order-tabs">
             <div class="order-tabs-desc">
-              <button class="tab-bg" order-filter="all">All order (<span id="all_order">0</span>)</button>
-              <button order-filter="process">process <span>(1)</span></button>
-              <button order-filter="confirmed">Confirm<span>(1)</span></button>
-              <button order-filter="processing">Processing <span>(1)</span></button>
-              <button order-filter="transit">In transit <span>(1)</span></button>
-              <button order-filter="deliver">Deliverd <span>(1)</span></button>
-              <button order-filter="return">Return <span>(1)</span></button>
-              <button order-filter="cancel">Cancel <span>(1)</span></button>
-              <button order-filter="trash">Trash <span>(1)</span></button>
+              <div>
+                <span>1</span>
+                <button class="tab-bg" order-filter="all">All order<span id="all_order"></span></button>
+              </div>
+              <div>
+                <span>2</span>
+                <button order-filter="process">process </button>
+              </div>
+              <div>
+                <span>3</span>
+                <button order-filter="confirmed">Confirm</button>
+              </div>
+              <div>
+                <span>4</span>
+                <button order-filter="processing">Processing</button>
+              </div>
+              <div>
+                <span>5</span>
+                <button order-filter="transit">In transit</button>
+              </div>
+              <div>
+                <span>6</span>
+                <button order-filter="deliver">Deliverd</button>
+              </div>
+              <div>
+                <span>7</span>
+                <button order-filter="return">Return</button>
+              </div>
+              <div>
+                <span>8</span>
+                <button order-filter="cancel">Cancel</button>
+              </div>
+              <div>
+                <span>9</span>
+                <button order-filter="trash">Trash</button>
+              </div>
             </div>
           </div>
 
@@ -106,6 +133,7 @@
                         <div class="o-topbar">
                             <div class="otb-left">
                                 <p class="otb-1">${obj.id}</p>
+                                <p>website title here</p>
                                 <p class="cc-name">${obj.billing.first_name}</p>
 
                                 <div class="cc-phone-n">
@@ -180,22 +208,40 @@
                     `;
               })
               // ------------------- edit details starts from here ---------------------------
-
+              let isClickf = 0;
               let billEdit = document.querySelector(".ed-bill-btn");
               billEdit.addEventListener("click", () => {
-                let obbedBl = document.querySelector(".obb-bl-n")
-                obbedBl.contentEditable = true;
-                obbedBl.style.border = "2px solid gray";
-                obbedBl.style.padding = "5px";
+                isClickf++;
+                if (isClickf % 2 == 1) {
+                  let obbedBl = document.querySelector(".obb-bl-n")
+                  obbedBl.contentEditable = true;
+                  obbedBl.style.border = "2px solid gray";
+                  obbedBl.style.padding = "5px";
+                }
+                if (isClickf % 2 == 0) {
+                  let obbedBl = document.querySelector(".obb-bl-n")
+                  obbedBl.contentEditable = false;
+                }
               })
 
-              let phoneEdit = document.querySelector(".ed-phone-btn");
-              phoneEdit.addEventListener("click", () => {
-                let obbeditphone = document.querySelector(".obb-tl-id")
-                obbeditphone.contentEditable = true;
-                obbeditphone.style.border = "2px solid gray";
-                obbeditphone.style.padding = "5px";
+              let phoneEditBtn = document.querySelector(".ed-phone-btn");
+              phoneEditBtn.addEventListener("click", () => {
+                isClickf++;
+                if (isClickf % 2 == 1) {
+                  let obPhChange = document.querySelector(".obb-tl-id")
+                  obPhChange.contentEditable = true;
+                  obPhChange.style.border = "2px solid gray";
+                  obPhChange.style.padding = "5px";
+                }
+                if (isClickf % 2 == 0) {
+                  let obPhChange = document.querySelector(".obb-tl-id")
+                  obPhChange.contentEditable = false;
+                }
               })
+
+
+
+
 
               // card event starts here
 
@@ -225,18 +271,52 @@
               // 
               const orderFilterBtn = document.querySelectorAll(".order-tabs-desc button");
               const orderItem = document.querySelectorAll(".order-card");
+              const filterBTnSpan = document.querySelectorAll(".order-tabs-desc div > span");
+              console.log(filterBTnSpan);
+
+              filterBTnSpan.forEach((e, i) => {
+                e.addEventListener("click", () => {
+
+                  filterBTnSpan.forEach(e => {
+                    e.style.backgroundColor = "lightgray";
+                  })
+
+                  e.style.backgroundColor = "green";
+
+
+
+
+                  orderItem.forEach((el, ind) => {
+
+                    let xlmBtn = e.getAttribute("order-filter").toLowerCase();
+
+                    let ordeItemFilterValue = orderCard[i].getAttribute("order-filter").toLowerCase();
+
+                    console.log(xlmBtn);
+                    console.log(ordeItemFilterValue);
+
+                    if (xlmBtn == ordeItemFilterValue) {
+                      el.style.display = "block";
+                    }else {
+                      el.style.display = "none";
+                    }
+                  })
+
+
+
+                  
+
+                })
+              })
+
+
+
 
 
               orderItem.forEach((ea) => {
 
                 orderFilterBtn.forEach(e => {
                   e.addEventListener("click", () => {
-
-                    orderFilterBtn.forEach(l => {
-                      l.classList.remove("tab-bg");
-                    })
-
-                    e.classList.add("tab-bg");
 
                     let ev = e.getAttribute('order-filter').toLowerCase();
                     if (ev == ea.getAttribute('order-filter')) {

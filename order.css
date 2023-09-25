@@ -23,7 +23,7 @@
     cursor: pointer;
 }
 
-.order-tabs {
+/* .order-tabs {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -47,6 +47,54 @@
     font-weight: 400;
     cursor: pointer;
     font-size: 0.8rem;
+} */
+
+
+.order-tabs-desc {
+    display: flex;
+    position: relative;
+    justify-content: space-between;
+    gap: 2rem;
+}
+
+.order-tabs-desc div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.order-tabs-desc div button {
+    background: none;
+    font-size: 0.8rem;
+    border: none;
+    outline: none;
+    margin-top: 1rem;
+}
+
+
+.order-tabs-desc div > span {
+    display: flex;
+    background: lightgray;
+    color: white;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+}
+
+.order-tabs-desc::after {
+    content: "";
+    width: 98%;
+    height: 4px;
+    background: lightseagreen;
+    position: absolute;
+    top: 12px;
+    left: 0;
+    z-index: -10;
+    margin-left: 1rem;
 }
 
 .search-order {
