@@ -8,14 +8,14 @@
 }
 
 .order-topbar h1 {
-    font-weight: 400;
+    font-weight: 700;
     color: black;
 }
 
 .order-topbar button {
     outline: none;
     border: none;
-    padding: 5px 10px;
+    padding: 0px 10px;
     background: black;
     color: white;
     border-radius: 5px;
@@ -62,7 +62,6 @@
 }
 
 .order-time {
-    margin-top: 2rem;
     font-size: 2rem;
     font-weight: 400;
     color: lightgray;
@@ -70,11 +69,10 @@
 
 
 .order-card {
-    margin-top: 1rem;
     width: 100%;
-    height: 100px;
+    height: 80px;
     box-shadow: 2px 3px 10px rgba(128, 128, 128, 0.233);
-    transition: height 1s;
+    transition: all 1s;
     overflow: hidden;
 }
 
@@ -82,7 +80,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 100px;
+    height: 80px;
     cursor: pointer;
     border-bottom: 1px solid gray;
 }
@@ -126,8 +124,11 @@
 }
 
 .cc-name {
-    width: 200px;
+    width: 150px;
     margin-left: 1rem;
+}
+.cc-phone-n {
+    width: 105px;
 }
 
 .otb2 {
@@ -139,7 +140,6 @@
 
 .otb3 {
     font-size: 0.6rem;
-    margin-top: 5px;
     text-transform: uppercase;
     color: #0067B0;
     width: 70px;
@@ -178,7 +178,8 @@
 .o-bottombar {
     display: flex;
     justify-content: space-between;
-    padding: 2.5rem 3rem;
+    align-items: center;
+    padding: 0 4rem 3rem 4rem;
     width: 100%;
     transition: opacity 1s;
     position: relative;
@@ -247,7 +248,25 @@
 
 .obb-billing-address, .obb-telephone, .obb-email, .obb-shipping-address{
     position: relative;
-    width: 100%;
+    width: 400px;
+}
+
+.ed-bill-btn {
+    position: absolute;
+    top: 0.5rem;
+    left: 8rem;
+    height: 20px;
+    width: 20px;
+    cursor: pointer;
+}
+
+.ed-phone-btn {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    cursor: pointer;
+    top: 7px;
+    left: 4rem;
 }
 
 #edit-ob-address {
@@ -262,7 +281,11 @@
  * order status starts from here
  */
 .order-status {
+    position: absolute;
+    left: 50%;
+    bottom: 0;
     width: 70%;
+    transform: translateX(-50%);
     margin: 0 auto;
     min-height: 50px;
     padding-bottom: 1rem;
@@ -337,17 +360,13 @@
    */
 
    .edit-order {
-    position: absolute;
-    top: 0;
-    right: 1rem;
-    transform: scale(0);
+    display: none;
     width: 400px;
-    height: 450px;
     background: white;
     box-shadow: 2px 3px 5px rgba(128, 128, 128, 0.233);
     padding: 1rem;
-    transition: transform 1s;
     border-radius: 10px;
+    z-index: 333;
    }
 
    .edit-order  div {
@@ -383,7 +402,6 @@
    .ed-change-btn {
     width: 120px;
     display: block;
-    margin: 2rem auto;
     padding: 10px 10px;
     border: none;
     outline: none;
@@ -399,11 +417,8 @@
     */  
 
     .print-icon img {
-        width: 50px;
-        height: 50px;
-        position: absolute;
-        bottom: 2rem;
-        right: 2rem;
+        width: 35px;
+        height: 40px;
         cursor: pointer;
     }
 
@@ -424,7 +439,7 @@
      .cancel-edit-page {
         position: absolute;
         top: 1rem;
-        right: 1rem;
+        right: 2rem;
         font-size: 2.5rem;
         cursor: pointer;
      }
@@ -468,5 +483,3 @@
     background: #1E003D;
     color: white;
 }
-
-

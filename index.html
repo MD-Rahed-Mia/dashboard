@@ -4,11 +4,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dashboard - Econaz Order Manager</title>
-  <link rel="stylesheet" href="order.css">
-  <link rel="stylesheet" href="user.css">
-  <link rel="stylesheet" href="dashboard.css">
-  <link rel="stylesheet" href="style.css">
+  <title>Orders - Econaz Order Manager</title>
+  <link rel="stylesheet" href="order.css?v=1695638690">
+  <link rel="stylesheet" href="user.css?v=1695638690">
+  <link rel="stylesheet" href="dashboard.css?v=1695638690">
+  <link rel="stylesheet" href="style.css?v=1695638690">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 </head>
 
@@ -16,25 +16,28 @@
   <div class="wrapper">
     <div id="sidebar">
       <ul>
-        <li data-name="Dashboard">
-          <i class="fa-solid fa-database open"></i>
-        </li>
-        <li data-name="Orders">
-          <i class="fa-solid fa-cart-shopping "></i>
-        </li>
-        <li data-name="User">
-          <i class="fa-solid fa-user "></i>
-        </li>
-        <li data-name="Chart">
-          <i class="fa-solid fa-chart-pie"></i>
-
-        </li>
-        <li data-name="Link"><i class="fa-solid fa-ribbon"></i></li>
-        <li data-name="Website"><i class="fa-solid fa-up-right-from-square"></i></li>
-        <li data-name="Message"><i class="fa-solid fa-message"></i></i></li>
-        <li data-name="Pin"><i class="fa-solid fa-thumbtack"></i></i></li>
-        <li data-name="Settings"><i class="fa-solid fa-gear"></i></li>
-        <li data-name="Logout"><i class="fa-solid fa-power-off"></i></li>
+        <a href="?page=orders">
+          <li data-name="Orders">
+            <i class="fa-solid fa-cart-shopping open"></i>
+          </li>
+        </a>
+        <a href="?page=users">
+          <li data-name="User">
+            <i class="fa-solid fa-user "></i>
+          </li>
+        </a>
+        <a href="?page=websites">
+          <li data-name="Websites"><i class="fa-solid fa-up-right-from-square "></i></li>
+        </a>
+        <a href="?page=logs">
+          <li data-name="Logs"><i class="fa-solid fa-message "></i></i></li>
+        </a>
+        <a href="?page=settings">
+          <li data-name="Settings"><i class="fa-solid fa-gear "></i></li>
+        </a>
+        <a href="?page=logout">
+          <li data-name="Logout"><i class="fa-solid fa-power-off "></i></li>
+        </a>
       </ul>
 
     </div>
@@ -47,87 +50,9 @@
         </div>
       </div>
       <div class="main-context">
-        <div class="tabs-item active dashboard">
-          <h1>Dashboard</h1>
-          <div class="dashboard-website-list">
-            <div class="wb-heading">
-              <span>Welcome Safiul Alom,</span>
-              <button class="awn-btn-1">+ &nbsp;Add Website</button>
-            </div>
-            <div class="wb-list">
-              <div class="wb-card">
-                <div>
-                  <li><i class="fa-regular fa-square-check"></i></li>
-                  <li>#122</li>
-                </div>
-                <li><img
-                    src="https://img.freepik.com/premium-photo/image-colorful-galaxy-sky-generative-ai_791316-9864.jpg?w=2000"
-                    alt="wb-logo" class="wb-img"></li>
-                <li class="wb-name">website Name</li>
-                <li class="wb-ls-visit">23/05.2022 tue <br>07:05 PM
-                </li>
-                <li class="wb-c-edit"> <i class="fa-solid fa-pen-to-square"></i></li>
-                <li><a href="https://fontawesome.com/icons/square-check?f=classic&s=regular"
-                    class="wb-url-l">https://fontawesome.com/icons/square-check?f=classic&s=regular</a></li>
-              </div>
-            </div>
-
-            <!-- new website add -->
-
-            <div class="add-n-website">
-              <h1>connect website</h1>
-              <form onsubmit="return updatePlatform()">
-                <div class="awn-link">
-                  <label for="link">website url</label>
-                  <input type="text" id="website_name" placeholder="Enter Website Name"><br>
-                  <input type="url" id="website" placeholder="Enter Website URL"><br>
-                </div>
-                <button class="awn-btn" type="submit">Connect</button>
-                <span id="msg"></span>
-              </form>
-              <i class="fa-solid awn-c-btn fa-xmark"></i>
-            </div>
-
-
-            <!--Connect JS-->
-            <script>
-              function updatePlatform() {
-                let url = document.getElementById("website").value;
-                let msg = document.getElementById("msg");
-                let user = document.getElementById("website_name").value;
-                let domain = (new URL(url));
-                let uri = 'https://' + domain.hostname + '/wc-auth/v1/authorize?app_name=Econaz%20Order%20Manager&scope=read_write&user_id=' + user + '&return_url=' + window.location.hostname + '/dashboard.php&callback_url=' + window.location.hostname + '/ajax.php';
-                window.open(uri, "_blank");
-                msg.innerHTML = "নতুন যে ট্যাব চালু হয়েছে সেখানে আপনার ওয়েবসাইটে লগিন করে Approve করুন। ";
-                return false;
-              }
-            </script>
-            <!--Connect JS end-->
-
-
-            <!-- addwebsite js code here -->
-
-            <script>
-              let awnBtn = document.querySelector(".awn-c-btn");
-              let addWebsiteCard = document.querySelector(".add-n-website");
-              let addNewbtn = document.querySelector(".awn-btn-1");
-
-              addNewbtn.onclick = () => {
-                addWebsiteCard.style.transform = "scale(1)";
-              }
-              awnBtn.onclick = () => {
-                addWebsiteCard.style.transform = "scale(0)";
-              }
-            </script>
-
-
-          </div>
-        </div>
-
-        <div class="order tabs-item hidden">
+        <div class="order tabs-item">
           <div class="order-topbar">
             <h1>Order</h1>
-            <button>+ &nbsp;Add order</button>
           </div>
           <div class="order-tabs">
             <div class="order-tabs-desc">
@@ -182,6 +107,10 @@
                             <div class="otb-left">
                                 <p class="otb-1">${obj.id}</p>
                                 <p class="cc-name">${obj.billing.first_name}</p>
+
+                                <div class="cc-phone-n">
+                                  ${obj.billing.phone}
+                                </div>
                                 <div class="otb-process">
                                     <div class="otb2"></div>
                                     <span class="otb3">${obj.status}</span>
@@ -192,6 +121,10 @@
                                 </div>
                                 <img src="${obj.line_items[0].image.src}" alt="img" class="ot-img">
                             </div>
+                            <div class="print-icon">
+                              <img src="images/print_icon.png" alt="print">
+                            </div>
+
                             <div class="o-invoice-n">
                               ${obj.id}
                             </div>
@@ -219,91 +152,16 @@
                             <div class="obb-center">
                                 <div class="obb-billing-address"> 
                                     <p class="obb-h">Billing Address</p>
-                                    <p class="obb-bl-n">${obj.billing.address_1}
-                                </div>
-                                <div class="obb-email">
-                                    <p class="obb-h">Email</p>
-                                    <a class="obb-email-id">${obj.billing.email}</a>
+                                    <img src="images/pencil.png" alt="edit details" class="ed-bill-btn">
+                                    <p class="obb-bl-n">${obj.billing.address_1} ${obj.billing.address_2}</p>
                                 </div>
                                 <div class="obb-telephone">
-                                    <p class="obb-h">Telephone</p>
-                                    <a class="obb-tl-id">+88 01542369525</a>
-                                </div>
-                                <div class="obb-shipping-address">
-                                    <p class="obb-h">Shipping Adress</p>
-                                    <p class="obb-s-id">122 Dhaka, Motizil <br>Near Idris Market, Kolatoli, <br>Dhaka
-                                    </p>
-
+                                    <p class="obb-h">Phone</p>
+                                    <img src="images/pencil.png" alt="edit details" class="ed-phone-btn">
+                                    <a class="obb-tl-id">${obj.billing.phone}</a>
                                 </div>
                             <div>
 
-
-                            </div>
-                                <!-- no data here you can add some more -->
-                            </div>
-                            
-                            <div class="edit-details-icon">
-                                    <img src="images/pencil.png" alt="edit details" class="ed-img-icon">
-                                  </div>
-                            <div class="print-icon">
-                              <img src="images/print_icon.png" alt="print">
-                            </div>
-
-
-                            <div class="edit-order">
-            <div class="eo-heading">Edit order</div>
-            <form action="">
-              <div>
-                <label for="ed-cc-name">Customer name</label>
-                <input type="text" value="${obj.billing.first_name}" onfocus="this.setSelectionRange(0, 99999)">
-              </div>
-              <div>
-                <label for="ed-cc-email">Email</label>
-                <input type="email" value="${obj.billing.email}" onfocus="this.setSelectionRange(0, 99999)">
-              </div>
-              <div>
-                <label for="ed-cc-phone">Phone number</label>
-                <input type="text" value="${obj.billing.phone}" onfocus="this.setSelectionRange(0, 99999)">
-              </div>
-              <div>
-                <label for="ed-cc-address">Address</label>
-                <textarea name="address" id="" cols="30" rows="5" value="" onfocus="this.setSelectionRange(0, 99999)">${obj.billing.address_1}</textarea>
-              </div>
-              <div>
-                <label for="ed-cc-status">Change status</label>
-                <select name="" id="" class="ed-cc-status">
-                  <option value="">Select current status</option>
-                  <option value="">Process</option>
-                  <option value="">Confirm</option>
-                  <option value="">Processing</option>
-                  <option value="">In trasit</option>
-                  <option value="">Deliverd</option>
-                  <option value="">Return</option>
-                  <option value="">Cancel</option>
-                  <option value="">Trash</option>
-                  <option value="">On hold</option>
-                  <option value="">Draft</option>
-                </select>
-              </div>
-              <div>
-                <label for="ed-cc-payment">Payment type</label>
-                <select name="" id="" class="ed-cc-status">
-                  <option value="">Select payment type</option>
-                  <option value="">Mobile banking</option>
-                  <option value="">Bank</option>
-                  <option value="">Credit card</option>
-                  <option value="">Cash on delivery</option>
-                </select>
-              </div>
-              <button type="button" class="ed-change-btn">change order</button>
-            </form>
-
-            <i class="fa-solid cancel-edit-page fa-xmark"></i>
-          </div>
-
-
-
-                        </div>
                         <div class="order-status">
                             <button>Process</button>
                             <button>confirm</button>
@@ -318,11 +176,25 @@
                             <button>Draft</button>
                             <button>Delete</button>
                         </div>
-
-
                     </div>
-
                     `;
+              })
+              // ------------------- edit details starts from here ---------------------------
+
+              let billEdit = document.querySelector(".ed-bill-btn");
+              billEdit.addEventListener("click", () => {
+                let obbedBl = document.querySelector(".obb-bl-n")
+                obbedBl.contentEditable = true;
+                obbedBl.style.border = "2px solid gray";
+                obbedBl.style.padding = "5px";
+              })
+
+              let phoneEdit = document.querySelector(".ed-phone-btn");
+              phoneEdit.addEventListener("click", () => {
+                let obbeditphone = document.querySelector(".obb-tl-id")
+                obbeditphone.contentEditable = true;
+                obbeditphone.style.border = "2px solid gray";
+                obbeditphone.style.padding = "5px";
               })
 
               // card event starts here
@@ -336,14 +208,14 @@
                   isClick = !isClick;
 
                   orderTopbar.forEach((ls) => {
-                    ls.parentElement.style.height = "100px";
+                    ls.parentElement.style.height = "80px";
                   });
 
                   if (isClick) {
-                    e.parentElement.style.height = "550px";
+                    e.parentElement.style.height = "fit-content";
                   }
                   else {
-                    e.parentElement.style.height = "100px"
+                    e.parentElement.style.height = "80px"
                   }
                 })
               });
@@ -413,388 +285,41 @@
                 })
 
               }
-              orderCard.forEach((el, i) => {
-                let edPage = orderCard[i].querySelector(".edit-order");
-              let editBtn = orderCard[i].querySelector(".ed-img-icon");
-              editBtn.addEventListener("click", () => {
-                edPage.style.transform = "scale(1)";
-              })
-
-              let canbtnEdit = orderCard[i].querySelector(".cancel-edit-page");
-              canbtnEdit.addEventListener("click", () => {
-                canbtnEdit.parentElement.style.transform = "scale(0)";
-              })
-              })
-
-
-
-
             }
 
-
           </script>
-
-
-
-
-
 
           <!-- edit order ends here -->
           <div id="order"></div>
 
           <div class="order-pagination">
-              <ul>
-                <li>Previous</li>
-                <li>1</li>
-                <li>2</li>
-                <li>3</li>
-                <li>4</li>
-                <li>5</li>
-                <li>6</li>
-                <li>7</li>
-                <li>8</li>
-                <li>9</li>
-                <li>11</li>
-                <li>12</li>
-                <li>13</li>
-                <li>14</li>
-                <li>20</li>
-                <li>30</li>
-                <li>40</li>
-                <li>100</li>
-                <li>Next</li>
-              </ul>
+            <ul>
+              <li>Previous</li>
+              <li>1</li>
+              <li>2</li>
+              <li>3</li>
+              <li>4</li>
+              <li>5</li>
+              <li>6</li>
+              <li>7</li>
+              <li>8</li>
+              <li>9</li>
+              <li>11</li>
+              <li>12</li>
+              <li>13</li>
+              <li>14</li>
+              <li>20</li>
+              <li>30</li>
+              <li>40</li>
+              <li>100</li>
+              <li>Next</li>
+            </ul>
           </div>
 
         </div>
-
-
-
-        <div class="users hidden tabs-item hidden">
-          <div class="order-topbar">
-            <h1>Users</h1>
-            <button class="ut-btn">+ &nbsp;Add user</button>
-          </div>
-          <!-- user card goes here -->
-          <div class="user-details" id="activeUsers">
-            <div class="user-card" id="user_16">
-              <img
-                src="https://www.nortonrosefulbright.com/-/media/images/nrf/nrfweb/cvs/uploaded/rahul-mansigani150x150png.png?revision=&revision=4611686018427387904"
-                alt="user" class="u-img">
-              <p class="u-name">Rahed</p>
-              <p class="u-email">rahed@gmail.com</p>
-              <div class="u-status">
-                <p class="u-s">Status: <span id="status_16">Moderator</span></p>
-                <div class="u-phone-n">
-                  Contact: <a href="tel:12345678">12345678</a>
-                </div>
-              </div>
-              <button class="u-btn-disable" onclick="blockUser(16);">Block</button>
-            </div>
-            <div class="user-card" id="user_18">
-              <img
-                src="https://www.nortonrosefulbright.com/-/media/images/nrf/nrfweb/cvs/uploaded/rahul-mansigani150x150png.png?revision=&revision=4611686018427387904"
-                alt="user" class="u-img">
-              <p class="u-name">test</p>
-              <p class="u-email">test@gmail.com</p>
-              <div class="u-status">
-                <p class="u-s">Status: <span id="status_18">Moderator</span></p>
-                <div class="u-phone-n">
-                  Contact: <a href="tel:4343">4343</a>
-                </div>
-              </div>
-              <button class="u-btn-disable" onclick="blockUser(18);">Block</button>
-            </div>
-          </div>
-          <!-- add user card starts here -->
-          <div class="user-details" id="blockUsers">
-
-            <div class="user-card" id="user_15">
-              <img
-                src="https://www.nortonrosefulbright.com/-/media/images/nrf/nrfweb/cvs/uploaded/rahul-mansigani150x150png.png?revision=&revision=4611686018427387904"
-                alt="user" class="u-img">
-              <p class="u-name">Jony</p>
-              <p class="u-email">sajonybd@gmail.com</p>
-              <div class="u-status">
-                <p class="u-s">Status: <span id="status_15">Blocked</span></p>
-                <div class="u-phone-n">
-                  Contact: <a href="tel:01967550181">01967550181</a>
-                </div>
-              </div>
-              <button class="u-btn" onclick="activeUser(15);">Active</button>
-            </div>
-            <div class="user-card" id="user_17">
-              <img
-                src="https://www.nortonrosefulbright.com/-/media/images/nrf/nrfweb/cvs/uploaded/rahul-mansigani150x150png.png?revision=&revision=4611686018427387904"
-                alt="user" class="u-img">
-              <p class="u-name">Demo</p>
-              <p class="u-email">demotest@gmail.com</p>
-              <div class="u-status">
-                <p class="u-s">Status: <span id="status_17">Blocked</span></p>
-                <div class="u-phone-n">
-                  Contact: <a href="tel:123456">123456</a>
-                </div>
-              </div>
-              <button class="u-btn" onclick="activeUser(17);">Active</button>
-            </div>
-          </div>
-          <!-- add user card starts here -->
-
-
-          <div class="add-user">
-            <h1 class="au-heading">New User</h1><ion-icon name="close-outline" class="u-close"></ion-icon>
-            <hr>
-            <form id="add-user" onsubmit="return addUser();">
-              <div class="name">
-                <label for="">Name</label>
-                <input type="text" required id="userName" placeholder="Enter User Name">
-              </div>
-              <div class="email">
-                <label for="">Email</label>
-                <input type="text" id="userEmail" placeholder="demo@gmail.com">
-              </div>
-              <div class="phone">
-                <label for="">Contact</label>
-                <input type="text" id="phoneNum" placeholder="Enter Contact Number">
-              </div>
-              <div class="password">
-                <label for="">Password</label>
-                <input type="text" id="userPass" placeholder="Set Password">
-              </div>
-              <!--<div class="role">-->
-              <!--  <label for="">Role</label>-->
-              <!--  <select name="role" class="role-option">-->
-              <!--    <option value="Editor">Select role</option>-->
-              <!--    <option value="Editor">Editor</option>-->
-              <!--    <option value="Moderator">Moderator</option>-->
-              <!--    <option value="Admin">Admin</option>-->
-              <!--    <option value="Visitor">Visitor</option>-->
-              <!--  </select>-->
-              <!--  <i class="fa-solid roi fa-chevron-down"></i>-->
-              <!--</div>-->
-              <span id="msg01"></span>
-              <button class="add-user-btn" type="submit">Add User</button>
-            </form>
-          </div>
-          <script>
-            let newUser;
-            function activeUser(id) {
-              fetch("ajax.php", {
-                method: "post",
-                headers: {
-                  'Accept': 'application/json',
-                  'Content-Type': 'application/json'
-                },
-
-                //make sure to serialize your JSON body
-                body: JSON.stringify({
-                  activeUser: id
-                })
-              })
-                .then((response) => response.json())
-                .then(data => {
-                  if (data.message == 'Success') {
-                    newUser = document.getElementById("user_" + id);
-                    newUser.removeChild(newUser.lastElementChild);
-                    document.getElementById("user_" + id).remove();
-                    document.getElementById("activeUsers").innerHTML += `<div class="user-card" id="user_${id}">${newUser.innerHTML}<button class="u-btn-disable" onclick="blockUser(${id});">Block</button></div>`;
-                    document.getElementById("status_" + id).innerText = 'Moderator';
-
-                  }
-                });
-            }
-
-            function blockUser(id) {
-              fetch("ajax.php", {
-                method: "post",
-                headers: {
-                  'Accept': 'application/json',
-                  'Content-Type': 'application/json'
-                },
-
-                //make sure to serialize your JSON body
-                body: JSON.stringify({
-                  blockUser: id
-                })
-              })
-                .then((response) => response.json())
-                .then(data => {
-                  if (data.message == 'Success') {
-                    newUser = document.getElementById("user_" + id);
-                    newUser.removeChild(newUser.lastElementChild);
-                    document.getElementById("user_" + id).remove();
-                    document.getElementById("blockUsers").innerHTML += `<div class="user-card" id="user_${id}">${newUser.innerHTML}<button class="u-btn" onclick="activeUser(${id});">Active</button></div>`;
-                    document.getElementById("status_" + id).innerText = 'Blocked';
-                  }
-                });
-            }
-
-            function removeUser(id) {
-              fetch("ajax.php", {
-                method: "post",
-                headers: {
-                  'Accept': 'application/json',
-                  'Content-Type': 'application/json'
-                },
-
-                //make sure to serialize your JSON body
-                body: JSON.stringify({
-                  removeUser: id
-                })
-              })
-                .then((response) => response.json())
-                .then(data => {
-                  if (data.message == 'Success') {
-                    document.getElementById("user_" + id).remove();
-                  }
-                });
-            }
-
-            function addUser() {
-              let userName = document.getElementById("userName").value;
-              let userEmail = document.getElementById("userEmail").value;
-              let phoneNum = document.getElementById("phoneNum").value;
-              let userPass = document.getElementById("userPass").value;
-              fetch("ajax.php", {
-                method: "post",
-                headers: {
-                  'Accept': 'application/json',
-                  'Content-Type': 'application/json'
-                },
-
-                //make sure to serialize your JSON body
-                body: JSON.stringify({
-                  userName: userName,
-                  userEmail: userEmail,
-                  phoneNum: phoneNum,
-                  userPass: userPass
-                })
-              })
-                .then((response) => response.json())
-                .then(data => {
-                  if (data.message == 'Success') {
-                    document.getElementById("msg01").innerHTML = 'User Added';
-                    document.getElementsByClassName("user-details")[0].innerHTML += `<div class="user-card" id="user_17">
-              <img
-                src="https://www.nortonrosefulbright.com/-/media/images/nrf/nrfweb/cvs/uploaded/rahul-mansigani150x150png.png?revision=&revision=4611686018427387904"
-                alt="user" class="u-img">
-              <p class="u-name">${userName}</p>
-              <p class="u-email">${userEmail}</p>
-              <div class="u-status">
-              <p class="u-s">Status: <span id="status_17">Moderator</span></p>
-                <div class="u-phone-n">
-                  Contact: <a href="tel:${phoneNum}">${phoneNum}</a>
-                </div>
-              </div>
-              <button class="u-btn-disable" onclick="blockUser(17);">Block</button>
-            </div>`;
-                  } else {
-                    document.getElementById("msg01").innerHTML = 'Failed';
-                  }
-                  document.getElementById("add-user").reset();
-                });
-              return false;
-
-            }
-          </script>
-        </div>
-
-        <!-- users end here -->
-
-
-
-        <div class="logout tabs-item hidden">
-          <h1>123</h1>
-        </div>
-        <div class="logout tabs-item hidden">
-          <h1>124</h1>
-        </div>
-        <div class="logout tabs-item hidden">
-          <h1>125</h1>
-        </div>
-        <div class="logs tabs-item hidden">
-          <h1>Logs</h1>
-        </div>
-        <div class="websites tabs-item hidden">
-          <div class="order-topbar">
-            <h1>Websites</h1>
-          </div>
-        </div>
-        <div class="settings tabs-item hidden">
-          <h1>Settings</h1>
-        </div>
-        <div class="logout tabs-item hidden">
-          <h1>Logout</h1>
-          <a class="awn-btn" href="logout.php">Logout</a>
-        </div>
-
-      </div>
-      <!-- main end -->
-
-    </div>
-  </div>
-
-  <div class="notification">
-    <h1>Notification</h1>
-    <i class="fa-solid noti-cancel fa-xmark"></i>
-    <div class="noti-card">
-      <span>2days ago</span>
-      <div>
-        <h3>Congratulations! A new record</h3>
-        <div>
-          <span>Todays Sales Summary</span>
-          <p>here are 1 people on your site right now and this is a new record. Your last record was
-            0</span>
-        </div>
-
-        <div class="noti-delete">
-          <span>delete</span>
-          <span>mark as read</span>
-        </div>
-      </div>
-
-    </div>
-    <div class="noti-card">
-      <span>2days ago</span>
-      <div>
-        <h3>Congratulations! A new record</h3>
-        <div>
-          <span>Todays Sales Summary</span>
-          <p>here are 1 people on your site right now and this is a new record. Your last record was
-            0</span>
-        </div>
-
-        <div class="noti-delete">
-          <span>delete</span>
-          <span>mark as read</span>
-        </div>
-      </div>
-
-    </div>
-    <div class="noti-card">
-      <span>2days ago</span>
-      <div>
-        <h3>Congratulations! A new record</h3>
-        <div>
-          <span>Todays Sales Summary</span>
-          <p>here are 1 people on your site right now and this is a new record. Your last record was
-            0</span>
-        </div>
-
-        <div class="noti-delete">
-          <span>delete</span>
-          <span>mark as read</span>
-        </div>
-      </div>
-
-    </div>
-
-  </div>
-
-
-  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-  <script src="main.js"></script>
+        <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+        <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+        <script src="main.js?v=1695638690"></script>
 </body>
 
 </html>
