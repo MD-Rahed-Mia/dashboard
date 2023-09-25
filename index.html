@@ -66,7 +66,7 @@
               </div>
               <div>
                 <span>3</span>
-                <button order-filter="confirmed">Confirm</button>
+                <button order-filter="confirmed">confirmed</button>
               </div>
               <div>
                 <span>4</span>
@@ -78,7 +78,7 @@
               </div>
               <div>
                 <span>6</span>
-                <button order-filter="deliver">Deliverd</button>
+                <button order-filter="refunded">refunded</button>
               </div>
               <div>
                 <span>7</span>
@@ -91,6 +91,10 @@
               <div>
                 <span>9</span>
                 <button order-filter="trash">Trash</button>
+              </div>
+              <div>
+                <span>10</span>
+                <button order-filter="on-hold">on hold</button>
               </div>
             </div>
           </div>
@@ -288,9 +292,9 @@
 
                   orderItem.forEach((el, ind) => {
 
-                    let xlmBtn = e.getAttribute("order-filter").toLowerCase();
+                    let xlmBtn = orderFilterBtn[i].getAttribute("order-filter");
 
-                    let ordeItemFilterValue = orderCard[i].getAttribute("order-filter").toLowerCase();
+                    let ordeItemFilterValue = el.getAttribute("order-filter").toLowerCase();
 
                     console.log(xlmBtn);
                     console.log(ordeItemFilterValue);
@@ -299,6 +303,10 @@
                       el.style.display = "block";
                     }else {
                       el.style.display = "none";
+                    }
+
+                    if (xlmBtn == "all") {
+                      el.style.display = "block"
                     }
                   })
 
