@@ -193,95 +193,107 @@
                                     <a class="obb-tl-id">${obj.billing.phone}</a>
                                 </div>
                             <div>
-                          </div>   <div class="order-status">
+                          </div>   
+                          
+                          <div class="order-status">
                           <div>
-                            <span>1</span>
+                            <span class="ss-span">1</span>
                             <button>Process</button>
                           </div>
                           
                           <div>
-                            <span>2</span>
+                            <span  class="ss-span">2</span>
                             <button>confirm</button>
                           </div>
                           <div>
-                            <span>2</span>
+                            <span  class="ss-span">2</span>
                             <button>In transit</button>
                           </div>
                             
                           <div>
-                            <span>3</span>
+                            <span class="ss-span">3</span>
                             <button>Delivered</button>
                           </div>
                           <div>
-                            <span>4</span>
+                            <span class="ss-span">4</span>
                             <button>confirm</button>
                           </div>
                           <div>
-                            <span>5</span>
+                            <span class="ss-span">5</span>
                             <button>Return</button>
                           </div>
                           <div>
-                            <span>6</span>
+                            <span class="ss-span">6</span>
                             <button>Cancel</button>
                           </div>
                         
                           <div>
-                            <span>7</span>
+                            <span class="ss-span">7</span>
                             <button>Trash</button>
                           </div>
                           
                           <div>
-                            <span>8</span>
+                            <span class="ss-span">8</span>
                             <button>pending payment</button>
                           </div>
                           <div>
-                            <span>9</span>
+                            <span class="ss-span">9</span>
                             <button>Refunded</button>
                           </div>
                           <div>
-                            <span>10</span>
+                            <span class="ss-span">10</span>
                             <button>On hold</button>
                           </div>
                           <div>
-                            <span>11</span>
+                            <span class="ss-span">11</span>
                             <button>Draft</button>
                           </div>
                           <div>
-                            <span>12</span>
+                            <span class="ss-span">12</span>
                             <button>Delete</button>
                           </div>
 
-                        </div>
+                         </div>
+
+                         <div class="modal-edit-dt">
+                          <input type="text" placeholder="enter details">
+                          <input type="text" placeholder=" details">
+                          <div>
+                          <label>Select your option</lable>
+                            <select>
+                            <option value="option1">option 1</option>
+                            <option value="option1">option 2</option>
+                            <option value="option1">option 3</option>
+                            <option value="option1">option 4</option>
+                          </select>
+                          </div>
+                          <button class="cng-details">Change address</button>
+                          <i class="fa-solid cnl-cross-btn fa-xmark"></i>
+                         </div>
                     </div>
                     `;
               })
-              // ------------------- edit details starts from here ---------------------------
 
-              const editBillBtn = document.querySelectorAll(".ed-bill-btn");
-              console.log(editBillBtn);
 
-              editBillBtn.forEach(element => {
-                element.addEventListener("click", () => {
+              // ------------------- edit modal delails here ---------------------------
 
-                })
+              let cnlbtn = document.querySelectorAll(".cnl-cross-btn");
+
+
+
+              cnlbtn.forEach(element => {
+                
+              element.addEventListener("click", () => {
+                element.parentElement.style.display = "none";
+              })
               });
 
-              let phoneEditBtn = document.querySelector(".ed-phone-btn");
-              phoneEditBtn.addEventListener("click", () => {
-                isClickf++;
-                if (isClickf % 2 == 1) {
-                  let obPhChange = document.querySelector(".obb-tl-id")
-                  obPhChange.contentEditable = true;
-                  obPhChange.style.border = "2px solid gray";
-                  obPhChange.style.padding = "5px";
-                }
-                if (isClickf % 2 == 0) {
-                  let obPhChange = document.querySelector(".obb-tl-id")
-                  obPhChange.contentEditable = false;
-                }
-              })
-
-
+              let ssSpanBtn = document.querySelectorAll(".ss-span");
+              ssSpanBtn.forEach((element, ind) => {
+                element.addEventListener("click", () => {
+                  document.querySelector(".modal-edit-dt").style.display = "block";
+                })
+              });
 
 
 
@@ -347,11 +359,6 @@
                       el.style.display = "block"
                     }
                   })
-
-
-
-
-
                 })
               })
 
