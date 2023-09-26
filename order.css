@@ -53,8 +53,12 @@
 .order-tabs-desc {
     display: flex;
     position: relative;
-    justify-content: space-between;
     gap: 2rem;
+}
+
+.tab-bg {
+    background: #2980b9;
+    color: white;
 }
 
 .order-tabs-desc div {
@@ -63,17 +67,27 @@
     justify-content: center;
     flex-direction: column;
     cursor: pointer;
+}.order-tabs-desc div > span {
+    display: none;
 }
+.order-tabs-desc div button {
+    font-size: 1rem;
+    padding: 5px 10px;
+    border: none;
+    outline: none;
+    cursor: pointer;
 
+}
+/* 
 .order-tabs-desc div button {
     background: none;
     font-size: 0.8rem;
     border: none;
     outline: none;
     margin-top: 1rem;
-}
+} */
 
-
+/* 
 .order-tabs-desc div > span {
     display: flex;
     background: lightgray;
@@ -83,8 +97,8 @@
     border-radius: 50%;
     align-items: center;
     justify-content: center;
-}
-
+} */
+/* 
 .order-tabs-desc::after {
     content: "";
     width: 98%;
@@ -95,7 +109,7 @@
     left: 0;
     z-index: -10;
     margin-left: 1rem;
-}
+} */
 
 .search-order {
     padding: 10px;
@@ -227,8 +241,9 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 4rem 3rem 4rem;
+    padding: 0 4rem 1rem 4rem;
     width: 100%;
+    padding-bottom: 50px;
     transition: opacity 1s;
     position: relative;
 }
@@ -236,11 +251,13 @@
 .obb-left {
     display: flex;
     align-items: center;
+    min-width: 40%;
 }
 
 .obb-center {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    display: flex;
+    align-items: center;
+    justify-content: center;
     gap: 3rem;
     margin: 2rem 1rem;
 }
@@ -330,27 +347,54 @@
  */
 .order-status {
     position: absolute;
-    left: 50%;
-    bottom: 0;
-    width: 70%;
-    transform: translateX(-50%);
-    margin: 0 auto;
-    min-height: 50px;
-    padding-bottom: 1rem;
+    bottom: 0.5rem;
+    left: 0;
+    width: 100%;
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: center;
+    gap: 2rem;
 }
 
-.order-status > button {
-    padding: 5px 10px;
-    outline: none;
-    border: none;
-    cursor: pointer;
+.order-status::before {
+    content: "";
+    width: 50%;
+    height: 4px;
+    background: gray;
+    position: absolute;
+    top: 14px;
+    left: 50%;
+    z-index: -10;
+    transform: translateX(-50%);
+}
+
+.order-status div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.order-status div span {
+    height: 30px;
+    width: 30px;
+    background: gray;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
     color: white;
+    cursor: pointer;
 }
 
-.order-status button:nth-child(1) {
+.order-status button {
+    font-size: 0.7rem;
+    border: none;
+    outline: none;
+}
+
+/* .order-status button:nth-child(1) {
     background: #1abc9c;
 }
 
@@ -396,7 +440,7 @@
 
 .order-status button:nth-child(12) {
     background: #708090;
-}
+} */
 
 
  /*
@@ -505,19 +549,16 @@
     bottom:0;
     left: 50%;
     transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 
-.order-pagination ul {
+.order-pagination li{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 100%;
-
-}
-
-.order-pagination ul li {
-    width: 100px;
     padding: 1rem;
     list-style-type: none;
     text-align: center;
@@ -526,8 +567,12 @@
     transition: all 500ms;
     font-size: 1.2rem;
 }
-.order-pagination ul li:hover {
+.order-pagination li:hover {
     transform: translateY(-15px);
     background: #1E003D;
     color: white;
+}
+
+.pagination-number {
+    display: flex;
 }

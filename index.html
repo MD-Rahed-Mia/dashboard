@@ -176,13 +176,13 @@
                         <div class="o-bottombar">
                             <div class="obb-left">
                                 <img src="${obj.line_items[0].image.src}" class="obb-l-img">
-                                <div class="obb-heading">
+                              <div class="obb-heading">
                                     <p>product_name</p>
                                     <p>${obj.total} * <span class="obb-quantity">1</span> = ${obj.total}</p>
-                                </div>
+                              </div>
                             </div>
-                            <div class="obb-center">
-                                <div class="obb-billing-address"> 
+                          <div class="obb-center">
+                               <div class="obb-billing-address"> 
                                     <p class="obb-h">Billing Address</p>
                                     <img src="images/pencil.png" alt="edit details" class="ed-bill-btn">
                                     <p class="obb-bl-n">${obj.billing.address_1} ${obj.billing.address_2}</p>
@@ -193,40 +193,78 @@
                                     <a class="obb-tl-id">${obj.billing.phone}</a>
                                 </div>
                             <div>
-
-                        <div class="order-status">
+                          </div>   <div class="order-status">
+                          <div>
+                            <span>1</span>
                             <button>Process</button>
+                          </div>
+                          
+                          <div>
+                            <span>2</span>
                             <button>confirm</button>
+                          </div>
+                          <div>
+                            <span>2</span>
                             <button>In transit</button>
+                          </div>
+                            
+                          <div>
+                            <span>3</span>
                             <button>Delivered</button>
+                          </div>
+                          <div>
+                            <span>4</span>
+                            <button>confirm</button>
+                          </div>
+                          <div>
+                            <span>5</span>
                             <button>Return</button>
+                          </div>
+                          <div>
+                            <span>6</span>
                             <button>Cancel</button>
+                          </div>
+                        
+                          <div>
+                            <span>7</span>
                             <button>Trash</button>
-                            <button>Pending payment</button>
-                            <button>Report abuse</button>
+                          </div>
+                          
+                          <div>
+                            <span>8</span>
+                            <button>pending payment</button>
+                          </div>
+                          <div>
+                            <span>9</span>
+                            <button>Refunded</button>
+                          </div>
+                          <div>
+                            <span>10</span>
                             <button>On hold</button>
+                          </div>
+                          <div>
+                            <span>11</span>
                             <button>Draft</button>
+                          </div>
+                          <div>
+                            <span>12</span>
                             <button>Delete</button>
+                          </div>
+
                         </div>
                     </div>
                     `;
               })
               // ------------------- edit details starts from here ---------------------------
-              let isClickf = 0;
-              let billEdit = document.querySelector(".ed-bill-btn");
-              billEdit.addEventListener("click", () => {
-                isClickf++;
-                if (isClickf % 2 == 1) {
-                  let obbedBl = document.querySelector(".obb-bl-n")
-                  obbedBl.contentEditable = true;
-                  obbedBl.style.border = "2px solid gray";
-                  obbedBl.style.padding = "5px";
-                }
-                if (isClickf % 2 == 0) {
-                  let obbedBl = document.querySelector(".obb-bl-n")
-                  obbedBl.contentEditable = false;
-                }
-              })
+
+              const editBillBtn = document.querySelectorAll(".ed-bill-btn");
+              console.log(editBillBtn);
+
+              editBillBtn.forEach(element => {
+                element.addEventListener("click", () => {
+
+                })
+              });
 
               let phoneEditBtn = document.querySelector(".ed-phone-btn");
               phoneEditBtn.addEventListener("click", () => {
@@ -301,7 +339,7 @@
 
                     if (xlmBtn == ordeItemFilterValue) {
                       el.style.display = "block";
-                    }else {
+                    } else {
                       el.style.display = "none";
                     }
 
@@ -312,7 +350,7 @@
 
 
 
-                  
+
 
                 })
               })
@@ -326,6 +364,11 @@
                 orderFilterBtn.forEach(e => {
                   e.addEventListener("click", () => {
 
+                    orderFilterBtn.forEach(e => {
+                      e.classList.remove("tab-bg");
+                    })
+                    e.classList.add("tab-bg");
+
                     let ev = e.getAttribute('order-filter').toLowerCase();
                     if (ev == ea.getAttribute('order-filter')) {
                       ea.style.display = "block";
@@ -335,7 +378,7 @@
                     }
 
                     if (ev == "all") {
-                      ea.style.display = "block"
+                      ea.style.display = "block";
                     }
                   })
                 })
@@ -373,6 +416,49 @@
                 })
 
               }
+
+
+
+              // ------------------- pagination js code here ---------------------------
+
+              let totalOrderItem = document.querySelectorAll(".order-card");
+              let pageCount = Math.ceil(totalOrderItem.length / 5);
+              let perPageItem = 5;
+
+              let paginationBox = document.querySelector(".order-pagination");
+              let paginationNumber = document.querySelector(".pagination-number");
+              console.log(totalOrderItem, pageCount, perPageItem);
+
+              function setPaginationNumber(pageCount) {
+                let paginationBtn = document.createElement("li");
+                paginationBtn.innerText = pageCount;
+                paginationNumber.appendChild(paginationBtn)
+              }
+
+              for (let index = 1; index <= pageCount; index++) {
+                setPaginationNumber(index)
+              }
+
+              const setItemOnPage = (pageNum, index) => {
+                pevPageLimit = (pageNum - 1) * perPageItem;
+                currRange = pageNum * perPageItem;
+
+                totalOrderItem.forEach((item, index) => {
+                  item.style.display = "none";
+
+                  if (index >= pevPageLimit && index <= currRange) {
+                    item.style.display = "";
+                  }
+                })
+
+              }
+
+              paginationBtn.forEach((e, i) => {
+                e.addEventListener("click", setPaginationNumber(e.innerText))
+              })
+
+
+              // ------------------- pagination js code ends here ---------------------------
             }
 
           </script>
@@ -380,31 +466,26 @@
           <!-- edit order ends here -->
           <div id="order"></div>
 
-          <div class="order-pagination">
-            <ul>
-              <li>Previous</li>
-              <li>1</li>
-              <li>2</li>
-              <li>3</li>
-              <li>4</li>
-              <li>5</li>
-              <li>6</li>
-              <li>7</li>
-              <li>8</li>
-              <li>9</li>
-              <li>11</li>
-              <li>12</li>
-              <li>13</li>
-              <li>14</li>
-              <li>20</li>
-              <li>30</li>
-              <li>40</li>
-              <li>100</li>
-              <li>Next</li>
-            </ul>
-          </div>
+
+          <!-- -------------------------- pagination html here ---------------------------- -->
+
 
         </div>
+        <div class="order-pagination">
+          <li>Previous</li>
+          <div class="pagination-number"></div>
+          <li>Next</li>
+        </div>
+
+
+        <!-- -------------------------- pagination html ends here ---------------------------- -->
+
+
+        <script>
+
+
+        </script>
+
         <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
         <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
         <script src="main.js?v=1695638690"></script>

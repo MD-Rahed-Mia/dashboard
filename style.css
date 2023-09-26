@@ -24,11 +24,6 @@ body {
     display: block;
 }
 
-.tab-bg {
-    background: seagreen;
-    color: black;
-}
-
 
 :root {
     --primary-color: #0e0d17 ;
