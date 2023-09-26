@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,41 +6,29 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Orders - Econaz Order Manager</title>
-  <link rel="stylesheet" href="order.css?v=1695638690">
-  <link rel="stylesheet" href="user.css?v=1695638690">
-  <link rel="stylesheet" href="dashboard.css?v=1695638690">
-  <link rel="stylesheet" href="style.css?v=1695638690">
+  <link rel="stylesheet" href="order.css?v=1695738008">
+  <link rel="stylesheet" href="user.css?v=1695738008">
+  <link rel="stylesheet" href="dashboard.css?v=1695738008">
+  <link rel="stylesheet" href="style.css?v=1695738008">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 </head>
 
 <body>
-  <div class="wrapper">
+    <div class="wrapper">
     <div id="sidebar">
       <ul>
-        <a href="?page=orders">
-          <li data-name="Orders">
-            <i class="fa-solid fa-cart-shopping open"></i>
-          </li>
-        </a>
-        <a href="?page=users">
-          <li data-name="User">
-            <i class="fa-solid fa-user "></i>
-          </li>
-        </a>
-        <a href="?page=websites">
-          <li data-name="Websites"><i class="fa-solid fa-up-right-from-square "></i></li>
-        </a>
-        <a href="?page=logs">
-          <li data-name="Logs"><i class="fa-solid fa-message "></i></i></li>
-        </a>
-        <a href="?page=settings">
-          <li data-name="Settings"><i class="fa-solid fa-gear "></i></li>
-        </a>
-        <a href="?page=logout">
-          <li data-name="Logout"><i class="fa-solid fa-power-off "></i></li>
-        </a>
+        <a href="?page=orders"><li data-name="Orders">
+          <i class="fa-solid fa-cart-shopping open"></i>
+        </li></a>
+        <a href="?page=users"><li data-name="User">
+          <i class="fa-solid fa-user "></i>
+        </li></a>
+        <a href="?page=websites"><li data-name="Websites"><i class="fa-solid fa-up-right-from-square "></i></li></a>
+        <a href="?page=logs"><li data-name="Logs"><i class="fa-solid fa-message "></i></i></li></a>
+        <a href="?page=settings"><li data-name="Settings"><i class="fa-solid fa-gear "></i></li></a>
+        <a href="?page=logout"><li data-name="Logout"><i class="fa-solid fa-power-off "></i></li></a>
       </ul>
-
+      
     </div>
     <div id="main-content">
       <div class="search-bar">
@@ -49,16 +38,11 @@
           <i class="fa-solid fa-bell" id="show-noti"></i>
         </div>
       </div>
-      <div class="main-context">
-        <div class="order tabs-item">
-          <div class="order-topbar">
-            <h1>Order</h1>
-          </div>
-          <div class="order-tabs">
+      <div class="main-context">          <div class="order-tabs">
             <div class="order-tabs-desc">
               <div>
                 <span>1</span>
-                <button class="tab-bg" order-filter="all">All order<span id="all_order"></span></button>
+                <button class="tab-bg" order-filter="all">All order (<span id="all_order">0</span>)</button>
               </div>
               <div>
                 <span>2</span>
@@ -102,7 +86,7 @@
           <!-- search bar starts here -->
 
           <div class="order-search-box">
-            <input type="text" placeholder="search order id..." class="search-order">
+            <input type="text" placeholder="search order id / mobile number..." class="search-order">
           </div>
 
 
@@ -120,7 +104,12 @@
           </div>
 
           <script>
-
+            let total;
+            let pp;
+            let p;
+            let s;
+            let cp;
+            
             fetch('https://staging.skmeibangladesh.com/wp-json/wc/v3/orders', {
               headers: {
                 'Content-Type': 'application/json',
@@ -130,19 +119,66 @@
               .then((response) => response.json())
               .then(data => orderList(data));
             function orderList(data) {
-              console.log(data);
-              document.getElementById("all_order").innerHTML = data.length;
-              data.forEach(function (obj) {
-                document.getElementById("order").innerHTML += `<div class="order-card" id="${obj.id}" data-phone="${obj.billing.phone}" order-filter="${obj.status}">
+            localStorage["orders"] = JSON.stringify(data);
+            showMore(1);
+            
+              // ------------------- edit details starts from here ---------------------------
+              let isClickf = 0;
+              let billEdit = document.querySelector(".ed-bill-btn");
+              billEdit.addEventListener("click", () => {
+                isClickf++;
+                if (isClickf % 2 == 1) {
+                  let obbedBl = document.querySelector(".obb-bl-n")
+                  obbedBl.contentEditable = true;
+                  obbedBl.style.border = "2px solid gray";
+                  obbedBl.style.padding = "5px";
+                }
+                if (isClickf % 2 == 0) {
+                  let obbedBl = document.querySelector(".obb-bl-n")
+                  obbedBl.contentEditable = false;
+                }
+              })
+
+              let phoneEditBtn = document.querySelector(".ed-phone-btn");
+              phoneEditBtn.addEventListener("click", () => {
+                isClickf++;
+                if (isClickf % 2 == 1) {
+                  let obPhChange = document.querySelector(".obb-tl-id")
+                  obPhChange.contentEditable = true;
+                  obPhChange.style.border = "2px solid gray";
+                  obPhChange.style.padding = "5px";
+                }
+                if (isClickf % 2 == 0) {
+                  let obPhChange = document.querySelector(".obb-tl-id")
+                  obPhChange.contentEditable = false;
+                }
+              })
+
+
+
+
+            }
+            
+            function showMore(page) {
+            let data = JSON.parse(localStorage["orders"]);
+            total = data.length;
+            pp = 2;
+            cp = page * pp;
+            p = Math.round(total / pp); 
+            s = cp - pp;
+            document.getElementById("all_order").innerHTML = total;
+            document.getElementById("order").innerHTML = '';
+            document.getElementById("pages").innerHTML = '';
+            for (i = 1; i <= p; i++) {
+            document.getElementById("pages").innerHTML += `<li onclick="showMore(${i})">${i}</li>`;
+            }
+            for (i = s; i < cp; i++) {
+            let obj = data[i];
+            document.getElementById("order").innerHTML += `<div class="order-card" id="${obj.id}" data-phone="${obj.billing.phone}" order-filter="${obj.status}">
                         <div class="o-topbar">
                             <div class="otb-left">
-                                <p class="otb-1">${obj.id}</p>
-                                <p>website title here</p>
+                                <p class="otb-1">${obj.id} <br> webName</p>
                                 <p class="cc-name">${obj.billing.first_name}</p>
-
-                                <div class="cc-phone-n">
-                                  ${obj.billing.phone}
-                                </div>
                                 <div class="otb-process">
                                     <div class="otb2"></div>
                                     <span class="otb3">${obj.status}</span>
@@ -156,18 +192,14 @@
                             <div class="print-icon">
                               <img src="images/print_icon.png" alt="print">
                             </div>
-
                             <div class="o-invoice-n">
                               ${obj.id}
                             </div>
                             <div class="otb-price">
                               &#2547; ${obj.total}
                             </div>
-                            <div class="otb-tt-pay">
-                                ${obj.payment_method_title}
-                            </div>
                             <div class="otb-bkash-trx-id">
-                                ${obj.cart_hash}
+                                A1H17UP0Q
                             </div>
                             <div class="otb-note-box">
                                 note
@@ -182,82 +214,80 @@
                               </div>
                             </div>
                           <div class="obb-center">
-                               <div class="obb-billing-address"> 
-                                    <p class="obb-h">Billing Address</p>
-                                    <img src="images/pencil.png" alt="edit details" class="ed-bill-btn">
-                                    <p class="obb-bl-n">${obj.billing.address_1} ${obj.billing.address_2}</p>
-                                </div>
                                 <div class="obb-telephone">
                                     <p class="obb-h">Phone</p>
-                                    <img src="images/pencil.png" alt="edit details" class="ed-phone-btn">
-                                    <a class="obb-tl-id">${obj.billing.phone}</a>
+                                    <a href="tel:${obj.billing.phone}" class="obb-tl-id cc-phone-n">${obj.billing.phone}</a>
+                                </div>
+                               <div class="obb-billing-address"> 
+                                    <p class="obb-h">Billing Address</p>
+                                    <p class="obb-bl-n">${obj.billing.address_1} ${obj.billing.address_2}</p>
                                 </div>
                             <div>
                           </div>   
                           
                           <div class="order-status">
                           <div>
-                            <span class="ss-span">1</span>
+                            <span class="ss-span"></span>
                             <button>Process</button>
                           </div>
                           
                           <div>
-                            <span  class="ss-span">2</span>
+                            <span  class="ss-span"></span>
                             <button>confirm</button>
                           </div>
                           <div>
-                            <span  class="ss-span">2</span>
+                            <span  class="ss-span"></span>
                             <button>In transit</button>
                           </div>
                             
                           <div>
-                            <span class="ss-span">3</span>
+                            <span class="ss-span"></span>
                             <button>Delivered</button>
                           </div>
                           <div>
-                            <span class="ss-span">4</span>
+                            <span class="ss-span"></span>
                             <button>confirm</button>
                           </div>
                           <div>
-                            <span class="ss-span">5</span>
+                            <span class="ss-span"></span>
                             <button>Return</button>
                           </div>
                           <div>
-                            <span class="ss-span">6</span>
+                            <span class="ss-span"></span>
                             <button>Cancel</button>
                           </div>
                         
                           <div>
-                            <span class="ss-span">7</span>
+                            <span class="ss-span"></span>
                             <button>Trash</button>
                           </div>
                           
                           <div>
-                            <span class="ss-span">8</span>
+                            <span class="ss-span"></span>
                             <button>pending payment</button>
                           </div>
                           <div>
-                            <span class="ss-span">9</span>
+                            <span class="ss-span"></span>
                             <button>Refunded</button>
                           </div>
                           <div>
-                            <span class="ss-span">10</span>
+                            <span class="ss-span"></span>
                             <button>On hold</button>
                           </div>
                           <div>
-                            <span class="ss-span">11</span>
+                            <span class="ss-span"></span>
                             <button>Draft</button>
-                          </div>
-                          <div>
-                            <span class="ss-span">12</span>
-                            <button>Delete</button>
                           </div>
 
                          </div>
 
+                         </div>
+                                    <img src="images/pencil.png" alt="edit details" class="ed-dt-btn-tr">
+                         </div>
+
                          <div class="modal-edit-dt">
-                          <input type="text" placeholder="enter details">
-                          <input type="text" placeholder=" details">
+                          <input type="text" placeholder="phone number" value="${obj.billing.phone}" onfocus="this.setSelectionRange(0, 99999)">
+                          <input type="text" placeholder="address" value="${obj.billing.address_1} ${obj.billing.address_2}" onfocus="this.setSelectionRange(0, 99999)">
                           <div>
                           <label>Select your option</lable>
                             <select>
@@ -271,33 +301,28 @@
                           <i class="fa-solid cnl-cross-btn fa-xmark"></i>
                          </div>
                     </div>
-                    `;
-              })
+                    `;    
+              }
 
 
-              // ------------------- edit modal delails here ---------------------------
+              // ------------------- edit details starts here ---------------------------
 
-              let cnlbtn = document.querySelectorAll(".cnl-cross-btn");
+              let editBtnTr = document.querySelectorAll(".ed-dt-btn-tr");
 
-
-
-              cnlbtn.forEach(element => {
-                
-              element.addEventListener("click", () => {
-                element.parentElement.style.display = "none";
-              })
-              });
-
-              let ssSpanBtn = document.querySelectorAll(".ss-span");
-              ssSpanBtn.forEach((element, ind) => {
+              editBtnTr.forEach((element, i) => {
                 element.addEventListener("click", () => {
-                  document.querySelector(".modal-edit-dt").style.display = "block";
-                })
+                  let modalPage = document.querySelectorAll(".modal-edit-dt");
+                  let cnlBtnMd = document.querySelectorAll(".cnl-cross-btn");
+                  modalPage[i].style.display = "flex";
+                  cnlBtnMd[i].addEventListener("click", () => {
+                    modalPage[i].style.display = "none";
+                  })
+                });
               });
 
-
-
-              // card event starts here
+              // ------------------- edit details ends here ---------------------------
+              
+            // card event starts here
 
               const orderTopbar = document.querySelectorAll(".o-topbar");
               const orderCard = document.querySelectorAll(".order-card");
@@ -319,9 +344,8 @@
                   }
                 })
               });
-
-
-              // filter starts from here
+              
+            // filter starts from here
               // 
               const orderFilterBtn = document.querySelectorAll(".order-tabs-desc button");
               const orderItem = document.querySelectorAll(".order-card");
@@ -339,7 +363,6 @@
 
 
 
-
                   orderItem.forEach((el, ind) => {
 
                     let xlmBtn = orderFilterBtn[i].getAttribute("order-filter");
@@ -351,7 +374,7 @@
 
                     if (xlmBtn == ordeItemFilterValue) {
                       el.style.display = "block";
-                    } else {
+                    }else {
                       el.style.display = "none";
                     }
 
@@ -359,12 +382,17 @@
                       el.style.display = "block"
                     }
                   })
+
+
+
+                  
+
                 })
               })
 
 
-// ------------------- order filtering starts here ---------------------------
 
+// ------------------- order filtering starts here ---------------------------
 
               orderItem.forEach((ea) => {
 
@@ -392,14 +420,6 @@
               })
 
               // filter end here
-
-
-
-              // ------------------- order status color here ---------------------------
-
-              
-
-
 
               // search bar filtering with id 
 
@@ -431,49 +451,7 @@
                 })
 
               }
-
-
-
-              // ------------------- pagination js code here ---------------------------
-
-              let totalOrderItem = document.querySelectorAll(".order-card");
-              let pageCount = Math.ceil(totalOrderItem.length / 5);
-              let perPageItem = 5;
-
-              let paginationBox = document.querySelector(".order-pagination");
-              let paginationNumber = document.querySelector(".pagination-number");
-              console.log(totalOrderItem, pageCount, perPageItem);
-
-              function setPaginationNumber(pageCount) {
-                let paginationBtn = document.createElement("li");
-                paginationBtn.innerText = pageCount;
-                paginationNumber.appendChild(paginationBtn)
-              }
-
-              for (let index = 1; index <= pageCount; index++) {
-                setPaginationNumber(index)
-              }
-
-              const setItemOnPage = (pageNum, index) => {
-                pevPageLimit = (pageNum - 1) * perPageItem;
-                currRange = pageNum * perPageItem;
-
-                totalOrderItem.forEach((item, index) => {
-                  item.style.display = "none";
-
-                  if (index >= pevPageLimit && index <= currRange) {
-                    item.style.display = "";
-                  }
-                })
-
-              }
-
-              paginationBtn.forEach((e, i) => {
-                e.addEventListener("click", setPaginationNumber(e.innerText))
-              })
-
-
-              // ------------------- pagination js code ends here ---------------------------
+              
             }
 
           </script>
@@ -481,29 +459,13 @@
           <!-- edit order ends here -->
           <div id="order"></div>
 
+          <div class="order-pagination">
+            <ul id="pages">
+            </ul>
+          </div>
 
-          <!-- -------------------------- pagination html here ---------------------------- -->
-
-
-        </div>
-        <div class="order-pagination">
-          <li>Previous</li>
-          <div class="pagination-number"></div>
-          <li>Next</li>
-        </div>
-
-
-        <!-- -------------------------- pagination html ends here ---------------------------- -->
-
-
-        <script>
-
-
-        </script>
-
-        <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-        <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-        <script src="main.js?v=1695638690"></script>
+        </div>  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+  <script src="main.js?v=1695738008"></script>
 </body>
-
 </html>
