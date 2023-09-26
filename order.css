@@ -393,10 +393,11 @@
     border: none;
     outline: none;
 }
-
-/* .order-status button:nth-child(1) {
+ .order-status div:nth-child(1) span{
     background: #1abc9c;
 }
+
+/*
 
 .order-status button:nth-child(2) {
     background: #9b59b6;
