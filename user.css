@@ -1,11 +1,13 @@
-
-.user-details {
+.user-details
+{
     display: grid;
     grid-template-columns: repeat(6, 250px);
     justify-content: space-around;
     margin-top: 2rem;
 }
-.user-card {
+
+.user-card
+{
     width: 250px;
     height: 300px;
     box-shadow: 2px 3px 10px rgba(0, 0, 0, 0.2);
@@ -15,7 +17,8 @@
     position: relative;
 }
 
-.u-img {
+.u-img
+{
     width: 80px;
     height: 80px;
     border-radius: 50%;
@@ -23,35 +26,42 @@
     text-align: center;
 }
 
-.u-name {
+.u-name
+{
     margin-top: 1rem;
     font-weight: 400;
     color: gray;
     text-transform: uppercase;
 }
 
-.u-email {
+.u-email
+{
     font-size: 0.8rem;
     margin-top: 5px;
 }
 
-.u-s {
+.u-s
+{
     margin-top: 10px;
     font-size: 0.8rem;
 }
 
-.u-s span {
+.u-s span
+{
     border-radius: 10px;
     padding: 5px;
     background: rgba(211, 211, 211, 0.404);
     color: coral;
 }
-.u-phone-n {
+
+.u-phone-n
+{
     font-size: 0.8rem;
     margin-top: 10px;
 }
 
-.u-btn {
+.u-btn
+{
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
@@ -67,7 +77,25 @@
     line-height: 100%;
 }
 
-.u-a-status {
+.u-btn-disable
+{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 10px;
+    background: #c20000;
+    outline: none;
+    border: none;
+    padding: 5px 25px;
+    border-radius: 20px;
+    cursor: pointer;
+    color: white;
+    font-size: 1.2rem;
+    line-height: 100%;
+}
+
+.u-a-status
+{
     position: absolute;
     top: 5px;
     right: 5px;
@@ -82,7 +110,8 @@
  * 
  */
 
- .add-user {
+.add-user
+{
     width: 400px;
     min-height: 400px;
     box-shadow: 2px 4px 15px rgb(211, 211, 211);
@@ -95,42 +124,48 @@
     transition: all 500ms;
     right: 2rem;
 
- }
- .au-heading {
+}
+
+.au-heading
+{
     font-size: 1.2rem;
     padding: 0.5rem;
     font-weight: 600;
     font-size: 1rem;
- }
+}
 
- .add-user form {
+.add-user form
+{
     width: 100%;
     height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
- }
+}
 
- .add-user form > div {
+.add-user form>div
+{
     width: 100%;
     display: flex;
     justify-content: space-between;
     padding: 1rem;
     align-items: center;
     font-size: 0.8rem;
- }
+}
 
- .add-user input {
+.add-user input
+{
     width: 250px;
     padding: 8px;
     margin-left: 1rem;
     border-radius: 4px;
     outline: none;
     border: 1px solid rgba(211, 211, 211, 0.568);
- }
+}
 
- .role-option {
+.role-option
+{
     width: 250px;
     -webkit-appearance: none;
     padding: 8px;
@@ -138,24 +173,28 @@
     border-radius: 4px;
     outline: none;
     border: 1px solid rgba(211, 211, 211, 0.568);
- }
+}
 
- .role {
+.role
+{
     position: relative;
- }
+}
 
- .roi {
+.roi
+{
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
     right: 30px;
 }
 
-.role-option {
+.role-option
+{
     padding: 0.5rem;
 }
 
-.add-user-btn {
+.add-user-btn
+{
     width: 120px;
     padding: 0.5rem;
     border: none;
@@ -171,7 +210,8 @@
     box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.2);
 }
 
-.u-close {
+.u-close
+{
     font-size: 2rem;
     color: black;
     position: absolute;

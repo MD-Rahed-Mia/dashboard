@@ -1,22 +1,23 @@
+.order
+{}
 
-.order {
-    position: relative;
-}
-
-.order-topbar {
+.order-topbar
+{
     display: flex;
     justify-content: space-between;
 }
 
-.order-topbar h1 {
+.order-topbar h1
+{
     font-weight: 700;
     color: black;
 }
 
-.order-topbar button {
+.order-topbar button
+{
     outline: none;
     border: none;
-    padding: 0px 10px;
+    padding: 10px 15px;
     background: black;
     color: white;
     border-radius: 5px;
@@ -51,27 +52,35 @@
 } */
 
 
-.order-tabs-desc {
+.order-tabs-desc
+{
     display: flex;
     position: relative;
     gap: 2rem;
 }
 
-.tab-bg {
+.tab-bg
+{
     background: #2980b9;
     color: white;
 }
 
-.order-tabs-desc div {
+.order-tabs-desc div
+{
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
     cursor: pointer;
-}.order-tabs-desc div > span {
+}
+
+.order-tabs-desc div>span
+{
     display: none;
 }
-.order-tabs-desc div button {
+
+.order-tabs-desc div button
+{
     font-size: 1rem;
     padding: 5px 10px;
     border: none;
@@ -79,6 +88,7 @@
     cursor: pointer;
 
 }
+
 /* 
 .order-tabs-desc div button {
     background: none;
@@ -112,7 +122,8 @@
     margin-left: 1rem;
 } */
 
-.search-order {
+.search-order
+{
     padding: 10px;
     width: 100%;
     min-height: 60px;
@@ -124,60 +135,82 @@
     background: transparent;
 }
 
-.order-time {
+.order-time
+{
     font-size: 2rem;
     font-weight: 400;
     color: lightgray;
 }
 
 
-.order-card {
+.order-card
+{
     width: 100%;
-    height: 80px;
+    height: 100px;
     box-shadow: 2px 3px 10px rgba(128, 128, 128, 0.233);
     transition: all 1s;
     overflow: hidden;
 }
 
-.o-topbar {
+.o-topbar
+{
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 80px;
+    height: 100px;
     cursor: pointer;
-    border-bottom: 1px solid gray;
+    border-bottom: 0.5px solid #bbbbbb;
+    flex: 12;
 }
 
-.o-topbar .otb-left {
+.products
+{
+    display: flex;
+    flex-direction: column;
+}
+
+.otb-left
+{
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.ot-img {
-    margin-left: 3rem;
+
+.otb-right
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ot-img
+{
     height: 70px;
     width: 60px;
-    padding: 0.5rem;
-    border: 1px solid #0067B0;
+    padding: 2px;
+    border: 1px solid #ced3da;
+    border-radius: 5px;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.o-invoice-n {
+.o-invoice-n
+{
     width: 100px;
 }
 
-.otb-1 {
+.otb-1
+{
     margin-left: 1rem;
     font-size: 0.8rem;
     font-weight: 400;
-    width: 50px;
+    min-width: 70px;
 }
 
-.otb-process {
-    margin-left: 2rem;
+.otb-process
+{
     width: 50px;
     display: flex;
     text-align: center;
@@ -186,87 +219,134 @@
     justify-content: space-between;
 }
 
-.cc-name {
+.cc-name
+{
     width: 150px;
-    margin-left: 1rem;
-}
-.cc-phone-n {
-    width: 105px;
+    text-align: center;
 }
 
-.otb2 {
+.cc-phone-n
+{
+    font-size: 17px;
+    width: 120px;
+}
+
+
+.otb2
+{
     width: 20px;
     height: 20px;
     background: #0067B0;
     border-radius: 50%;
+    margin-bottom: 5px;
 }
 
-.otb3 {
+.otb3
+{
     font-size: 0.6rem;
     text-transform: uppercase;
     color: #0067B0;
     width: 70px;
 }
 
-.otb-time {
-    margin-left: 3rem;
-    font-size: 0.8rem;
-    text-align: center;
+.otb-img
+{
+    display: flex;
+    gap: 5px;
+    min-width: 420px;
 }
 
-.otb-price {
+.bkash-pr {
+    min-width: 120px;
+}
+
+.item2
+{
+    min-width: 140px;
+}
+
+.otb-time
+{
+    font-size: 0.8rem;
+    text-align: center;
+    min-width: 160px;
+}
+
+.otb-price
+{
     font-size: 1.4rem;
     color: #0067B0;
     width: 110px;
-    
+
 }
 
-.otb-tt-pay {
-    width: 170px;
+.otb-tt-pay
+{
+    width: 100px;
     text-align: left;
     font-size: 0.8rem;
 }
 
-.otb-bkash-trx-id {
+.otb-bkash-trx-id
+{
     font-size: 0.8rem;
-    width: 180px;
+    width: 100px;
 }
 
-.otb-note-box {
-    width: 200px;
+.otb-note-box
+{
+    width: 100px;
     text-align: center;
     font-size: 0.8rem;
 }
 
-.o-bottombar {
+.edit-tb-dt {
+    min-width: 60px;
+}
+
+.ed-tb-dt-btn {
+    width: 30px;
+    height: 30px;
+}
+
+.o-bottombar
+{
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    padding: 0 4rem 1rem 4rem;
+    padding: 0 4rem 3rem 4rem;
     width: 100%;
-    padding-bottom: 50px;
+    padding-bottom: 100px;
     transition: opacity 1s;
     position: relative;
 }
 
-.obb-left {
+.obb-left
+{
     display: flex;
     align-items: center;
     min-width: 40%;
 }
 
-.obb-center {
+.obb-center
+{
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 3rem;
-    margin: 2rem 1rem;
+    gap: 2rem;
+    margin: 0 0 2.5rem 5rem;
 }
 
-.obb-l-img {
+.p-info
+{
+    padding: 5px;
+}
+
+
+.obb-l-img
+{
     height: 100px;
     width: 80px;
-    padding: 10px;
+    padding: 2px;
     border-radius: 5px;
     display: flex;
     align-items: center;
@@ -274,14 +354,16 @@
     border: 1px solid gray;
 }
 
-.obb-heading {
+.obb-heading
+{
     margin-left: 2rem;
     font-size: 1rem;
     color: gray;
     font-weight: 400;
 }
 
-.obb-quantity {
+.obb-quantity
+{
     height: 30px;
     width: 30px;
     display: inline-flex;
@@ -292,32 +374,42 @@
     justify-content: center;
 }
 
-.obb-bl-n {
-    font-size: 0.8rem;
+.obb-bl-n
+{
+    font-size: 16px;
 }
 
-.obb-h {
+.obb-h
+{
     font-size: 1.1rem;
     color: gray;
     margin: 10px 0;
 }
 
-.obb-email-id, .obb-s-id, .obb-tl-id {
-    font-size: 0.8rem;
+.obb-email-id,
+.obb-s-id,
+.obb-tl-id
+{
     cursor: pointer;
     position: relative;
 }
 
-.obb-shipping-address {
+.obb-shipping-address
+{
     position: relative;
 }
 
-.obb-billing-address, .obb-telephone, .obb-email, .obb-shipping-address{
+.obb-billing-address,
+.obb-telephone,
+.obb-email,
+.obb-shipping-address
+{
     position: relative;
-    width: 400px;
+    width: 200px;
 }
 
-.ed-bill-btn {
+.ed-btn
+{
     position: absolute;
     top: 0.5rem;
     left: 8rem;
@@ -326,7 +418,8 @@
     cursor: pointer;
 }
 
-.ed-phone-btn {
+.ed-phone-btn
+{
     width: 20px;
     height: 20px;
     position: absolute;
@@ -335,7 +428,8 @@
     left: 4rem;
 }
 
-#edit-ob-address {
+#edit-ob-address
+{
     position: absolute;
     top: 10px;
     right: -10px;
@@ -346,30 +440,32 @@
  * Custom CSS Comment:
  * order status starts from here
  */
-.order-status {
+.order-status
+{
     position: absolute;
-    bottom: 0.5rem;
+    bottom: 30px;
     left: 0;
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 2.5rem;
+    gap: 2rem;
 }
 
-.order-status::before {
-    content: "";
-    width: 55%;
-    height: 4px;
-    background: gray;
-    position: absolute;
-    top: 14px;
-    left: 50%;
-    z-index: -10;
-    transform: translateX(-50%);
-}
+/*.order-status::before {*/
+/*    content: "";*/
+/*    width: 60%;*/
+/*    height: 2px;*/
+/*    background: #ced3da;*/
+/*    position: absolute;*/
+/*    top: 10px;*/
+/*    left: 50%;*/
+/*    z-index: -10;*/
+/*    transform: translateX(-50%);*/
+/*}*/
 
-.order-status div {
+.order-status div
+{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -377,10 +473,11 @@
     gap: 1rem;
 }
 
-.order-status div span {
-    height: 30px;
-    width: 30px;
-    background: gray;
+.order-status div span
+{
+    height: 25px;
+    width: 25px;
+    background: #ced3da;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -389,13 +486,14 @@
     cursor: pointer;
 }
 
-.order-status button {
-    font-size: 0.7rem;
+.order-status button
+{
     border: none;
     outline: none;
 }
 
-.order-status span:hover{
+.order-status span:hover
+{
     background: #000000;
 }
 
@@ -403,60 +501,63 @@
 /*
  * modal details card starts from here
  */
-.modal-edit-dt {
-    position: relative;
-    width: 60%;
-    margin: 0 auto;
-    background: rgba(128, 128, 128, 0.507);
-    display: none;
-    align-items: center;
-    justify-content: center;
-    padding: 0.5rem;
-}
 
-.modal-edit-dt input {
-    padding: 6px 1rem;
-    height: 35px;
-    width: 250px;
-    font-size: 0.8rem;
-    border: none;
-    outline: none;
-    margin-right: 1rem;
-}
-
-.modal-edit-dt select {
-    width: 100px;
-    padding: 8px;
-    outline: none;
-    border: none;
-    margin-right: 1rem;
-}
-
-.modal-edit-dt button {
-    padding: 0.5rem 1rem;
-    border: none;
-    outline: none;
-    background: #0067B0;
-    color: white;
-    cursor: pointer;
-    font-size: 1rem;
-}
-
-.cnl-cross-btn {
+.modal-edit-dt
+{
     position: absolute;
-    top: 0.5rem;
-    right: 0.5rem;
-    font-size: 1.5rem;
-    cursor: pointer;
-}
-
-.ed-dt-btn-tr {
-    position: relative;
-    width: 35px;
-    height: 35px;
-    cursor: pointer;
     top: 0;
     left: 0;
+    width: 500px;
+    min-height: 100px;
+    display: none;
+    background: #fff;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0.5rem 2rem;
+}
+
+.modal-edit-dt input
+{
+    width: 100%;
+    padding: 2px 1rem;
+    margin-top: 0.5rem;
+}
+
+.modal-edit-dt button
+{
+
+    padding: 5px 10px;
+    font-size: 1rem;
+    background: #1abc9c;
+    outline: none;
+    border: none;
+    border-radius: 2px;
+    margin: 1rem auto;
+    cursor: pointer;
+    color: white;
+}
+
+.modal-edit-dt div
+{
+    width: 100%;
+    margin-top: 0.5rem;
+}
+
+.modal-edit-dt select
+{
+    width: 100%;
+    height: 1.5rem;
+}
+
+.cnl-cross-btn
+{
+    font-size: 2rem;
+    color: black;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    cursor: pointer;
 }
 
 /*
@@ -506,15 +607,16 @@
 } */
 
 
- /*
+/*
   * order status end hehe
   */
 
-  /*
+/*
    * edit order here
    */
 
-   .edit-order {
+.edit-order
+{
     display: none;
     width: 400px;
     background: white;
@@ -522,39 +624,46 @@
     padding: 1rem;
     border-radius: 10px;
     z-index: 333;
-   }
+}
 
-   .edit-order  div {
+.edit-order div
+{
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-top: 10px;
-   }
+}
 
-   .edit-order div input,textarea {
+.edit-order div input,
+textarea
+{
     width: 260px;
     padding: 5px 10px;
     resize: none;
-   }
+}
 
-   .edit-order form label {
+.edit-order form label
+{
     font-size: 0.8rem;
     color: #222;
-   }
+}
 
-   .eo-heading {
+.eo-heading
+{
     text-align: center;
     font-size: 2rem;
     color: black;
     width: 100%;
-   }
+}
 
-   .ed-cc-status {
+.ed-cc-status
+{
     width: 260px;
     padding: 5px 10px;
-   }
+}
 
-   .ed-change-btn {
+.ed-change-btn
+{
     width: 120px;
     display: block;
     padding: 10px 10px;
@@ -563,53 +672,57 @@
     color: white;
     background: #1abc9c;
     cursor: pointer;
-   }
+}
 
 
-   /*
+/*
     * Custom CSS Comment:
     * print css starts from here
-    */  
+    */
 
-    .print-icon img {
-        width: 35px;
-        height: 40px;
-        cursor: pointer;
-    }
+.print-icon img
+{
+    min-width: 35px;
+    height: 40px;
+    cursor: pointer;
+}
 
-    /*
+/*
      * Custom CSS Comment:
      * edit icon here
      */
 
-     .ed-img-icon {
-        width: 30px;
-        height: 30px;
-        position: absolute;
-        top: 2rem;
-        right: 2rem;
-        cursor: pointer;
-     }
+.ed-img-icon
+{
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    cursor: pointer;
+}
 
-     .cancel-edit-page {
-        position: absolute;
-        top: 1rem;
-        right: 2rem;
-        font-size: 2.5rem;
-        cursor: pointer;
-     }
+.cancel-edit-page
+{
+    position: absolute;
+    top: 1rem;
+    right: 2rem;
+    font-size: 2.5rem;
+    cursor: pointer;
+}
 
 
 /*
  * pagination start here
  */
-.order-pagination {
+.order-pagination
+{
     text-align: center;
     width: 1200px;
     height: 70px;
     padding: 1rem 2rem;
     position: relative;
-    bottom:0;
+    bottom: 0;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
@@ -617,12 +730,16 @@
     justify-content: center;
 }
 
-#pages {
+.product,
+#pages
+{
+    margin-top: 5px;
     display: flex;
 }
 
 
-.order-pagination li{
+.order-pagination li
+{
     align-items: center;
     padding: 1rem;
     list-style-type: none;
@@ -632,12 +749,15 @@
     transition: all 500ms;
     font-size: 1.2rem;
 }
-.order-pagination li:hover {
+
+.order-pagination li:hover
+{
     transform: translateY(-10px);
     background: #1E003D;
     color: white;
 }
 
-.pagination-number {
+.pagination-number
+{
     display: flex;
 }

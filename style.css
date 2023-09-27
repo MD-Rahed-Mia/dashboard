@@ -1,37 +1,45 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
 
-
-
-* {
+*
+{
     padding: 0;
     margin: 0;
     box-sizing: border-box;
     outline: none;
     font-family: 'roboto', 'sans-sarif';
+    font-size: 16px;
 }
 
-body {
+body
+{
     background: whitesmoke;
     width: 100%;
 }
 
-.hidden {
+.hidden
+{
     display: none;
 }
 
-.active {
+.active
+{
     display: block;
 }
 
-
-:root {
-    --primary-color: #0e0d17 ;
-    --secondary-color: rgba(128, 128, 128, 0.384);
-    --box-shadow : rgba(0, 0, 0, 0.35) 0px 5px 15px;
+.open
+{
+    background-color: gray;
 }
 
-#sidebar {
+:root
+{
+    --primary-color: #0e0d17;
+    --secondary-color: rgba(128, 128, 128, 0.384);
+    --box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+#sidebar
+{
     position: fixed;
     top: 0;
     left: 0;
@@ -42,16 +50,19 @@ body {
     padding: 2rem 1rem;
 }
 
-#sidebar ul {
+#sidebar ul
+{
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
     height: 100%;
     width: 100%;
+    list-style-type: none;
 }
 
-#sidebar li > i{
+#sidebar li>i
+{
     padding: 1.5rem;
     height: 2rem;
     width: 2rem;
@@ -67,7 +78,8 @@ body {
     color: white;
 }
 
-.icon-hover {
+.icon-hover
+{
     color: orangered;
     padding: 5px;
     border-radius: 2px;
@@ -82,19 +94,22 @@ body {
     letter-spacing: 1px;
 }
 
-#sidebar li:hover span {
+#sidebar li:hover span
+{
     display: block;
 }
 
 
 /* main content start here */
 
-#main-content {
+#main-content
+{
     margin-left: 80px;
     padding: 2rem 3rem;
 }
 
-.search-bar {
+.search-bar
+{
     padding: 0.5rem;
     min-height: 50px;
     border: 0.2px solid rgba(128, 128, 128, 0.253);
@@ -104,14 +119,16 @@ body {
     opacity: 0.7;
 }
 
-#search {
+#search
+{
     border: none;
     height: 100%;
     width: 40%;
     font-size: 1rem;
 }
 
-#noti-icon {
+#noti-icon
+{
     padding: 6px;
     height: 40px;
     width: 40px;
@@ -126,10 +143,13 @@ body {
 
 /* main context starts here */
 
-.main-context {
+.main-context
+{
     margin-top: 2rem;
 }
-.context-card-container {
+
+.context-card-container
+{
     margin-top: 1rem;
     display: flex;
     align-items: center;
@@ -142,7 +162,8 @@ body {
 
 /* .notification start from here */
 
-.notification {
+.notification
+{
     width: 400px;
     height: 100vh;
     position: fixed;
@@ -154,17 +175,20 @@ body {
     transition: right 1s;
 }
 
-.noti-card {
+.noti-card
+{
     margin-top: 30px;
     border: 1px solid lightgray;
     padding: 1rem;
 }
 
-.noti-card h3 {
+.noti-card h3
+{
     margin: 10px 0;
 }
 
-.noti-delete {
+.noti-delete
+{
     display: flex;
     justify-content: space-evenly;
     margin-top: 10px;
@@ -172,19 +196,23 @@ body {
     padding: 6px;
 }
 
-.noti-card {
+.noti-card
+{
     font-weight: 300;
 }
 
-.noti-delete span:first-child {
+.noti-delete span:first-child
+{
     color: orangered;
 }
 
-.noti-delete span:last-child {
+.noti-delete span:last-child
+{
     color: gray;
 }
 
-.noti-cancel {
+.noti-cancel
+{
     position: absolute;
     top: 10px;
     right: 10px;
@@ -193,11 +221,10 @@ body {
 }
 
 co
-
-
 /* product starts from here */
 
-.product-catergories button {
+.product-catergories button
+{
     background: none;
     padding: 10px 1rem;
     outline: none;
@@ -206,14 +233,16 @@ co
     margin-right: 2rem;
 }
 
-.xl2 {
+.xl2
+{
     font-size: 1rem;
     color: gray;
     font-weight: 400;
     margin-top: 3rem;
 }
 
-.product-card {
+.product-card
+{
     width: 75%;
     min-height: 100px;
     box-shadow: 10px 19px 19px 15px rgba(128, 128, 128, 0.253);
@@ -223,7 +252,8 @@ co
     justify-content: space-between;
 }
 
-.pc-visible {
+.pc-visible
+{
     width: 100%;
     max-height: 100px;
     display: flex;
@@ -233,7 +263,8 @@ co
     border-bottom: 1px solid slategray;
 }
 
-.pi1 {
+.pi1
+{
     margin-left: 1rem;
     padding: 1rem;
     height: 60px;
@@ -244,19 +275,22 @@ co
     justify-content: center;
 }
 
-.xl18 {
+.xl18
+{
     font-size: 1rem;
     color: lightslategray;
     font-weight: 300;
 }
 
-.xl13 {
+.xl13
+{
     display: flex;
     gap: 1rem;
     align-items: center;
 }
 
-.xl14 {
+.xl14
+{
     margin-left: 3rem;
     font-weight: 300;
     font-size: 0.8rem;
@@ -264,19 +298,22 @@ co
     justify-content: center;
 }
 
-.xl19 {
+.xl19
+{
     display: block;
     color: slategray;
     text-decoration: line-through;
 }
 
-.xl15 {
+.xl15
+{
     display: block;
     color: orangered;
     font-size: 0.8rem;
 }
 
-.xl16 {
+.xl16
+{
     width: 50px;
     height: 25px;
     background: lightgreen;
@@ -284,7 +321,8 @@ co
     position: relative;
 }
 
-.xl17 {
+.xl17
+{
     position: absolute;
     top: 50%;
     left: 5px;
@@ -295,19 +333,22 @@ co
     background: white;
 }
 
-.xl20 {
+.xl20
+{
     font-size: 0.8rem;
     color: gray;
 }
 
-.p-hide {
+.p-hide
+{
     height: 300px;
     display: none;
     transform: translateY(-100%);
     transition: all 1s;
 }
 
-.product-card:hover .p-hide {
+.product-card:hover .p-hide
+{
     display: block;
     transform: translateY(0);
 }
